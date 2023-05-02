@@ -1,0 +1,9 @@
+.relative {
+    position: relative
+}
+
+.admin-btn {
+    position: absolute;
+    top: 23rem;
+    left: calc(50vw - 60px);
+}

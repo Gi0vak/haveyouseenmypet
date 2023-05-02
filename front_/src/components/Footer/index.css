@@ -1,0 +1,27 @@
+.Footer {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    place-items: center;
+    width: 100vw;
+    height: 96px;
+    background-color: white;
+    z-index: 2;
+}
+
+@media screen and (max-width: 768px) {
+    .Footer {
+        grid-template-columns: 1fr;
+    }
+
+    .footer-left {
+        display: none;
+    }
+
+    .footer-right {
+        width: 90%;
+    }
+
+    .footer-btn {
+        width: 100%;
+    }
+}
