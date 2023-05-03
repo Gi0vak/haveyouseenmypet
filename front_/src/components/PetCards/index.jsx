@@ -19,8 +19,9 @@ const PetCards = ({
                     return (
                         <PetCard
                             key={index}
-                            logo={el.logo}
-                            postedAt={el.postedAt}
+                            name={el.name}
+                            logo={el.imageURL}
+                            postedAt={el.date_perte}
                             contract={el.contract}
                             company={el.company}
                             position={el.position}

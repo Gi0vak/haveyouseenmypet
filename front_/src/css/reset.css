@@ -23,8 +23,8 @@ dd {
 
 /* Remove list styles on ul, ol elements with a class, which suggests default styling will be removed 
 Updated on 20221213 by CEFIM */
-ul:where([class]),
-ol:where([class]) {
+ul:where([className]),
+ol:where([className]) {
   margin: 0;
   padding: 0;
   list-style: none;
@@ -43,7 +43,7 @@ body {
 }
 
 /* A elements that don't have a class get default styles */
-a:not([class]) {
+a:not([className]) {
   text-decoration-skip-ink: auto;
 }
 

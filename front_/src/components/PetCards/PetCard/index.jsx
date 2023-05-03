@@ -6,10 +6,10 @@ import { DeletePet } from '../../../API/api.js';
 
 const PetCard = ({
     logo,
+    name,
     postedAt,
     contract,
     company,
-    position,
     location,
     admin,
     theme,
@@ -48,7 +48,7 @@ const PetCard = ({
                     {contract}
                 </h3 >
                 <Link className="card-link" admin={admin} to={`/pets/${id}`}>
-                    <h1 className="card-pet-position">{position}</h1>
+                    <h1 className="card-pet-position">{name}</h1>
                 </Link>
                 <h3 className='card-pet-company'>{company}</h3>
                 <h3 className='card-pet-location'>{location}</h3>

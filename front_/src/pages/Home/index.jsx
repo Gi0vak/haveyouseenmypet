@@ -11,20 +11,22 @@ const Home = ({ theme, bodytheme }) => {
     const [getPets, setGetPets] = useState([]);
     const [n, setN] = useState(12);
 
+
+
     //fonctions qui récupère toutes les données de la collection pets et coupé en fonction de n (nombre de pets par page)
     useEffect(() => {
         const awaitPets = async () => {
             try {
                 const data = await GetPets();
-                const dataOrder = await data.sort((a, b) => new Date(b.postedAt) - new Date(a.postedAt));
+                const dataOrder = await data.sort((a, b) => new Date(b.date_perte) - new Date(a.date_perte));
                 setGetPets(dataOrder.slice(0, n));
-                console.log('first data : ', getPets);
+                console.log('first data : ', getPets)
             }
             catch (error) {
                 console.log('Error : ', error);
             }
         }
-        awaitPets();
+        { getPets && awaitPets() }
     }, [n]);
     //fonction qui change le nombre de pets par page(+12)
     const handleMore = (e) => {
@@ -58,7 +60,6 @@ const Home = ({ theme, bodytheme }) => {
                         Admin
                     </button>
                 </Link>
-
                 {/* Pet cards */}
                 <PetCards datas={getPets} handleMore={handleMore} admin="false" theme={theme} />
             </div>

@@ -1,8 +1,18 @@
 export const GetPets = async () => {
     try {
         const response = await fetch(
-            `http://localhost:8000/api/pets`
+            `http://localhost:8000/`
         );
+        if (!response.ok) { // Vérifie si la réponse n' est OK (statut HTTP 200-299)
+            throw new Error('Network response was not ok');
+        }
+        if (response.ok) { // Vérifie si la réponse est OK (statut HTTP 200-299)
+            console.log('Network response was ok');
+        }
+        const contentType = response.headers.get('content-type');
+        if (!contentType || !contentType.includes('application/json')) { // Vérifie si la réponse est au format JSON
+            throw new TypeError('Response was not JSON');
+        }
         const data = await response.json();
         return data;
     } catch (error) {

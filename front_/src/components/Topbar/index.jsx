@@ -21,7 +21,7 @@ const Navbar = () => {
                 <img src={sun} alt="sun" className='sun' />
                 <label className="switch">
                     <input type="checkbox" onClick={toggleTheme} checked={theme == "dark" ? true : false} />
-                    <span class="slider"></span>
+                    <span className="slider"></span>
                 </label>
                 <img src={moon} alt="moon" className='moon' />
 

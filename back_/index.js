@@ -1,40 +1,38 @@
 const express = require("express");
-
-const PORT = 8000;
+const cors = require("cors");
+const mysql = require("mysql");
 
 const app = express();
 
-const router = require("./router");
-
-const mongoose = require("mongoose");
-
-const dotenv = require("dotenv");
-
-const cors = require("cors");
-
-dotenv.config();
-
-mongoose
-    .connect(process.env.MONGODB_URL, {
-        useNewUrlParser: true,
-        useUnifiedTopology: true,
-    })
-    .then(() => {
-        console.log("Connected to MongoDB");
-    })
-    .catch((err) => {
-        console.log(err);
-    });
-
-
 app.use(cors());
 
-app.use(express.json());
+const connection = mysql.createConnection({
+    host: "localhost",
+    user: "root",
+    password: "",
+    database: "pets"
+});
 
-app.use(express.urlencoded({ extended: false }));
+connection.connect((err) => {
+    if (err) {
+        console.error("Erreur de connexion à la base de données : ", err);
+    } else {
+        console.log("Connecté à la base de données");
+    }
+});
 
-app.use(router);
+app.get("/", (req, res) => {
+    const sql = "SELECT animal.name, animal.sexe, animal.race, animal.couleur, animal.imageURL, adresse_perte.code_postal, annonce.date_perte FROM annonce INNER JOIN animal ON annonce.animalId = animal.id INNER JOIN adresse_perte ON annonce.adresse_perteId = adresse_perte.id;"
 
-app.listen(PORT, async () => {
-    console.log(`server up on port ${PORT}`);
+    connection.query(sql, (err, result) => {
+        if (err) {
+            console.error("Erreur lors de l'exécution de la requête : ", err);
+        } else {
+            res.send(result);
+        }
+    });
+});
+
+app.listen(8000, () => {
+    console.log("Serveur démarré sur le port 8000");
 });
