@@ -100,7 +100,7 @@ const updatePet = (req, res) => {
     )
         .then((pet) => {
             res.json(pet);
-            console.log('update');
+
         })
         .catch((err) => {
             res.status(500).send(err.message);
