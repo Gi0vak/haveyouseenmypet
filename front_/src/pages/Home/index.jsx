@@ -20,13 +20,14 @@ const Home = ({ theme, bodytheme }) => {
                 const data = await GetPets();
                 const dataOrder = await data.sort((a, b) => new Date(b.date_perte) - new Date(a.date_perte));
                 setGetPets(dataOrder.slice(0, n));
-                console.log('first data : ', getPets)
+
             }
             catch (error) {
                 console.log('Error : ', error);
             }
         }
-        { getPets && awaitPets() }
+        awaitPets()
+
     }, [n]);
     //fonction qui change le nombre de pets par page(+12)
     const handleMore = (e) => {
@@ -38,6 +39,7 @@ const Home = ({ theme, bodytheme }) => {
     const handleSearch = (dataSearch) => {
         setGetPets(dataSearch)
     }
+    console.log('my pets: ', getPets)
     return (
         <>
             {/* Home component */}

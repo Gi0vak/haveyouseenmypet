@@ -74,7 +74,7 @@
 body {
     margin: 0;
     font-family: 'Roboto', sans-serif;
-    background-color: #F2F2F2;
+    background-color: #DDE5B6;
     font-family: var(--font-family);
     height: 100%;
 }
@@ -153,12 +153,12 @@ label {
 /* themes */
 
 .light {
-    background-color: #ffffff;
+    background-color: #F0EAD2;
     color: #000000;
 }
 
 .body-light {
-    background-color: #F2F2F2;
+    background-color: #DDE5B6;
 }
 
 .dark {

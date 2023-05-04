@@ -2,12 +2,12 @@
     display: grid;
     place-content: center;
     place-items: center;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     column-gap: 4rem;
     row-gap: 6rem;
     max-width: 1400px;
-    margin-right: 5vw;
-    margin-left: 5vw;
+    margin-right: 10vw;
+    margin-left: 10vw;
     transition: all 0.5s ease-in-out;
     min-height: auto;
     margin-top: 240px;

@@ -13,14 +13,14 @@ const Navbar = () => {
 
     return (
         <section className={`topbar`} >
-            <img src={Topbar} alt="Topbar" className='topbar-img' />
+            <img src="https://i.postimg.cc/9M8p5jkp/chien-Chat-Hero.png" alt="Topbar" className='topbar-img' />
             <Link className="logo" to="/">
                 <h1 >Have you seen my pet ? </h1>
             </Link>
             <div className='toggle-button'>
                 <img src={sun} alt="sun" className='sun' />
                 <label className="switch">
-                    <input type="checkbox" onClick={toggleTheme} checked={theme == "dark" ? true : false} />
+                    <input type="checkbox" onClick={toggleTheme} checked={theme === "dark" ? true : false} />
                     <span className="slider"></span>
                 </label>
                 <img src={moon} alt="moon" className='moon' />

@@ -13,21 +13,20 @@
 }
 
 .topbar {
-    position: absolute;
     top: 0;
     right: 0;
     left: 0;
     display: flex;
     padding: 46px 165px;
     justify-content: space-between;
-    height: 162px;
+    width: 100%;
+    height: auto;
     z-index: 1;
-
 }
 
 .topbar-img {
     position: absolute;
-    height: 162px;
+    height: auto;
     width: 100%;
     top: 0;
     right: 0;
