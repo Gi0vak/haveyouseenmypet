@@ -1,12 +1,6 @@
-const router = require("express").Router();
+const app = express();
 // définition des routes API
-const {
-    getSearch,
-    getPet,
-    getPets,
-    createPet,
-    updatePet,
-    deletePet } = require("./controllers/Pet");
+
 
 router.get("/", (req, res) => {
     res.send("Let's build a CRUD API!");
@@ -14,7 +8,7 @@ router.get("/", (req, res) => {
 
 router.get("/api/search", getSearch);
 
-router.get("/api/pets", getPets);
+
 
 router.get("/api/pets/:petID", getPet);
 

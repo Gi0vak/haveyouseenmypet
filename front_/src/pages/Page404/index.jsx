@@ -9,7 +9,7 @@ const Page404 = ({ theme, bodytheme }) => {
             <Topbar />
 
             <section className={`notfound-body ${theme}`}>
-                <h1>404 !!!!!!</h1>
+                <h1>404 </h1>
             </section>
             <Footer />
         </section>

@@ -42,29 +42,31 @@ const Home = ({ theme, bodytheme }) => {
     console.log('my pets: ', getPets)
     return (
         <>
-            {/* Home component */}
-            <div className={`Home ${bodytheme}`}>
-                {/* Topbar component */}
-                <div className="relative">
-                    <Topbar />
+            {getPets && (<>
+                {/* Home component */}
+                <div className={`Home ${bodytheme}`}>
+                    {/* Topbar component */}
+                    <div className="relative">
+                        <Topbar />
+                    </div>
+
+                    {/* Media query for search bar */}
+                    <Media query="(max-width: 780px)">
+                        {/* Render mobile search bar if screen is smaller than 780px */}
+                        {matches => matches ? <SearchbarMobile handleSearch={handleSearch} /> : <SearchBar handleSearch={handleSearch} />}
+                    </Media>
+
+                    {/* Admin button */}
+                    <Link to="/admin" >
+                        {/* Button component */}
+                        <button className='button-one admin-btn'>
+                            Admin
+                        </button>
+                    </Link>
+                    {/* Pet cards */}
+                    <PetCards datas={getPets} handleMore={handleMore} admin="false" theme={theme} />
                 </div>
-
-                {/* Media query for search bar */}
-                <Media query="(max-width: 780px)">
-                    {/* Render mobile search bar if screen is smaller than 780px */}
-                    {matches => matches ? <SearchbarMobile handleSearch={handleSearch} /> : <SearchBar handleSearch={handleSearch} />}
-                </Media>
-
-                {/* Admin button */}
-                <Link to="/admin" >
-                    {/* Button component */}
-                    <button className='button-one admin-btn'>
-                        Admin
-                    </button>
-                </Link>
-                {/* Pet cards */}
-                <PetCards datas={getPets} handleMore={handleMore} admin="false" theme={theme} />
-            </div>
+            </>)}
         </>
 
 

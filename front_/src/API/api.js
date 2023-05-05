@@ -1,7 +1,7 @@
 export const GetPets = async () => {
     try {
         const response = await fetch(
-            `http://localhost:8000/`
+            `http://localhost:8000/api/pets`
         );
         if (!response.ok) { // Vérifie si la réponse n' est OK (statut HTTP 200-299)
             throw new Error('Network response was not ok');
