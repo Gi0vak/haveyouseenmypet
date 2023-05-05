@@ -33,13 +33,13 @@ function App() {
                         path="/admin"
                         element={<HomeAdmin theme={theme} bodytheme={bodyTheme} />} />
                     <Route
-                        path="/pets/:petID"
+                        path="/announces/:announceID"
                         element={<Single theme={theme} bodytheme={bodyTheme} />} />
                     <Route
-                        path="/newpet"
+                        path="/newannounce"
                         element={<NewSingle theme={theme} bodytheme={bodyTheme} />} />
                     <Route
-                        path="/updatepet/:petID"
+                        path="/updateannounce/:announceID"
                         element={<UpdateSingle theme={theme} bodytheme={bodyTheme} />} />
                     <Route
                         path="*"

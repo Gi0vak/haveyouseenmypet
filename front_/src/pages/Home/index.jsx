@@ -1,48 +1,48 @@
 import './index.css';
-import PetCards from '../../components/PetCards';
+import AnnounceCards from '../../components/AnnounceCards';
 import Topbar from '../../components/Topbar';
 import SearchBar from '../../components/Searchbar';
 import SearchbarMobile from '../../components/SearchbarMobile';
 import { useEffect, useState } from 'react';
 import Media from 'react-media';
-import { GetPets } from '../../API/api';
+import { GetAnnounces } from '../../API/api';
 import { Link } from 'react-router-dom';
 const Home = ({ theme, bodytheme }) => {
-    const [getPets, setGetPets] = useState([]);
+    const [getAnnounces, setGetAnnounces] = useState([]);
     const [n, setN] = useState(12);
 
 
 
-    //fonctions qui récupère toutes les données de la collection pets et coupé en fonction de n (nombre de pets par page)
+    //fonctions qui récupère toutes les données de la collection annonces et coupé en fonction de n (nombre d'annonces par page)
     useEffect(() => {
-        const awaitPets = async () => {
+        const awaitAnnounces = async () => {
             try {
-                const data = await GetPets();
+                const data = await GetAnnounces();
                 const dataOrder = await data.sort((a, b) => new Date(b.date_perte) - new Date(a.date_perte));
-                setGetPets(dataOrder.slice(0, n));
+                setGetAnnounces(dataOrder.slice(0, n));
 
             }
             catch (error) {
                 console.log('Error : ', error);
             }
         }
-        awaitPets()
+        awaitAnnounces()
 
     }, [n]);
-    //fonction qui change le nombre de pets par page(+12)
+    //fonction qui change le nombre d'annonces' par page(+12)
     const handleMore = (e) => {
         e.preventDefault()
         setN(n => n + 12);
-        setGetPets(getPets.slice(0, n));
+        setGetAnnounces(getAnnounces.slice(0, n));
     }
-    //fonction passée en props qui r�cupère toutes les données de la collection pets modifiées par la recherche
+    //fonction passée en props qui r�cupère toutes les données de la collection annonces modifiées par la recherche
     const handleSearch = (dataSearch) => {
-        setGetPets(dataSearch)
+        setGetAnnounces(dataSearch)
     }
-    console.log('my pets: ', getPets)
+    console.log('my announces: ', getAnnounces)
     return (
         <>
-            {getPets && (<>
+            {getAnnounces && (<>
                 {/* Home component */}
                 <div className={`Home ${bodytheme}`}>
                     {/* Topbar component */}
@@ -63,8 +63,8 @@ const Home = ({ theme, bodytheme }) => {
                             Brice
                         </button>
                     </Link>
-                    {/* Pet cards */}
-                    <PetCards datas={getPets} handleMore={handleMore} admin="false" theme={theme} />
+                    {/* Announce cards */}
+                    <AnnounceCards datas={getAnnounces} handleMore={handleMore} admin="false" theme={theme} />
                 </div>
             </>)}
         </>
