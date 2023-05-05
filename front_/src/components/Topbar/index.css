@@ -4,32 +4,31 @@
 
 }
 
-.logo>h1 {
-    color: white;
-    font-weight: 700;
-    font-size: 48px;
-    line-height: 58px;
-    margin: 0;
-}
-
 .topbar {
-    top: 0;
-    right: 0;
-    left: 0;
+    position: relative;
     display: flex;
-    padding: 46px 165px;
+    justify-content: space-around;
+    align-items: center;
+    padding: 4.7rem 5.8rem;
     justify-content: space-between;
     width: 100%;
-    height: auto;
-    z-index: 1;
+    height: 50.6rem;
 }
 
 .topbar-img {
+    opacity: 0.6;
     position: absolute;
     height: auto;
     width: 100%;
     top: 0;
-    right: 0;
+    left: 0;
+}
+
+.topbar-title {
+
+    color: black;
+    font-size: 4.8rem;
+    font-family: 'courgette';
 }
 
 @media screen and (max-width: 768px) {
