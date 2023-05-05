@@ -60,7 +60,7 @@ const Home = ({ theme, bodytheme }) => {
                     <Link to="/admin" >
                         {/* Button component */}
                         <button className='button-one admin-btn'>
-                            Admin
+                            Brice
                         </button>
                     </Link>
                     {/* Pet cards */}
