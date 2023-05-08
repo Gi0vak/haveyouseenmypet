@@ -30,7 +30,7 @@
 
 
 
-.card-pet-contract-postedAT {
+.card-announce-contract-postedAT {
     display: block ruby;
     font-weight: 400;
     color: var(--dark-grey);
@@ -41,18 +41,18 @@
     color: var(--dark-grey);
 }
 
-.card-pet-position {
+.card-announce-position {
     font-weight: 700;
     color: var(--very-dark-blue);
 }
 
 
-.card-pet-company {
+.card-announce-company {
     font-weight: 400;
     color: var(--dark-grey);
 }
 
-.card-pet-location {
+.card-announce-location {
     font-weight: 700;
     font-size: 14px;
     color: rgba(89, 100, 224, 1);

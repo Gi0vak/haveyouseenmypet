@@ -2,53 +2,42 @@ import './index.css';
 import Topbar from '../../components/Topbar';
 import Footer from '../../components/Footer';
 import { useEffect, useState } from 'react';
-import { CreatePet } from '../../API/api.js';
+import { CreateAnimal } from '../../API/api.js';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 
 const NewSingle = ({ theme, bodytheme }) => {
     const navigate = useNavigate();
-    const [petTitle, setPetTitle] = useState("");
-    const [companyName, setCompanyName] = useState("");
-    const [petDescription, setPetDescription] = useState("");
-    const [logo, setLogo] = useState("");
-    const [logoBackground, setLogoBackground] = useState("");
-    const [contract, setContract] = useState("");
-    const [location, setLocation] = useState("");
-    const [website, setWebsite] = useState("");
-    const [apply, setApply] = useState("");
-    const [content, setContent] = useState("");
-    const [content2, setContent2] = useState("");
-    const [items, setItems] = useState([]);
-    const [items2, setItems2] = useState([]);
+    const [animalName, setAnimalName] = useState("");
+    const [animalRace, setAnimalRace] = useState("");
+    const [animalAge, setAnimalAge] = useState("");
+    const [animalSexe, setAnimalSexe] = useState("");
+    const [animalPoids, setAnimalPoids] = useState("");
+    const [description, setDescription] = useState("");
+    const [imageURL, setImageURL] = useState("");
     const [success, setSuccess] = useState(false);
 
     const handleSubmitCreate = async (e) => {
         e.preventDefault()
-        const newPet = {
-            position: petTitle,
-            company: companyName,
-            logoBackground: logoBackground,
-            contract: contract,
-            location: location,
-            website: website,
-            apply: apply,
-            description: petDescription,
-            requirements: {
-                content: content,
-                items: items
-            },
-            role: {
-                content: content2,
-                items: items2
-            }
+        const newAnimal = {
+            name: animalName,
+            race: animalRace,
+            age: animalAge,
+            puce: 1,
+            sexe: animalSexe,
+            couleur: animalSexe,
+            poids: animalPoids,
+            adresseId: 1,
+            utilisateurId: 1,
+            description: description,
+            imageURL: imageURL,
         };
         try {
-            await CreatePet(newPet);
+            await CreateAnimal(newAnimal);
             navigate("/admin");
 
         } catch (error) {
-            console.log('Error creating pet:', error);
+            console.log('Error creating Animal:', error);
         }
 
     };
@@ -62,47 +51,62 @@ const NewSingle = ({ theme, bodytheme }) => {
                     <Link to="/admin">annuler</Link>
                 </div>
                 <form className={`new-single-form ${theme}`} onSubmit={handleSubmitCreate}>
-                    <label htmlFor="pet-title">Pet name</label>
+                    <h2>Animal</h2>
+
+                    <label htmlFor="animal-Name">Animal name</label>
                     <input
                         type="text"
-                        id="pet-title"
-                        value={petTitle}
-                        onChange={(event) => setPetTitle(event.target.value)}
+                        id="animal-Name"
+                        value={animalName}
+                        onChange={(event) => setAnimalName(event.target.value)}
                     />
 
-                    <label htmlFor="company-name">Company Name</label>
+                    <label htmlFor="Race-name">Race</label>
                     <input
                         type="text"
-                        id="company-name"
-                        value={companyName}
-                        onChange={(event) => setCompanyName(event.target.value)}
+                        id="animal-race"
+                        value={animalRace}
+                        onChange={(event) => setAnimalRace(event.target.value)}
                     />
 
-                    <label htmlFor="logo">Logo</label>
+                    <label htmlFor="logo">age</label>
                     <input
                         type="text"
-                        id="logo"
-                        value={logo}
+                        id="animal-age"
+                        value={animalAge}
                         placeholder='logo foot par défaut'
-                        onChange={(event) => setLogo(event.target.value)}
+                        onChange={(event) => setAnimalAge(event.target.value)}
                     />
 
-                    <label htmlFor="logo-background">Color Background</label>
+                    <label htmlFor="sexe">sexe</label>
                     <input
                         type="text"
-                        id="logo-background"
-                        value={logoBackground}
-                        onChange={(event) => setLogoBackground(event.target.value)}
+                        id="animal-sexe"
+                        value={animalSexe}
+                        onChange={(event) => setAnimalSexe(event.target.value)}
                     />
-                    <label htmlFor="contract">contract</label>
+                    <label htmlFor="poids">poids</label>
                     <input
                         type="text"
-                        id="contract"
-                        value={contract}
-                        onChange={(event) => setContract(event.target.value)}
+                        id="animal-poids"
+                        value={animalPoids}
+                        onChange={(event) => setAnimalPoids(event.target.value)}
                     />
-
-                    <label htmlFor="location">Location</label>
+                    <label htmlFor="animal-description">description</label>
+                    <textarea
+                        id="animal-description"
+                        value={description}
+                        onChange={(event) => setDescription(event.target.value)}
+                    ></textarea>
+                    <label htmlFor="poids">photo</label>
+                    <input
+                        type="text"
+                        id="animal-poids"
+                        value={imageURL}
+                        onChange={(event) => setImageURL(event.target.value)}
+                    />
+                    {/* <h2>User</h2>
+                    <label htmlFor="location"></label>
                     <input
                         type="text"
                         id="location"
@@ -125,12 +129,7 @@ const NewSingle = ({ theme, bodytheme }) => {
                         value={apply}
                         onChange={(event) => setApply(event.target.value)}
                     />
-                    <label htmlFor="pet-description">Pet Description</label>
-                    <textarea
-                        id="pet-description"
-                        value={petDescription}
-                        onChange={(event) => setPetDescription(event.target.value)}
-                    ></textarea>
+
                     <label htmlFor="content">content</label>
                     <input
                         type="text"
@@ -158,11 +157,11 @@ const NewSingle = ({ theme, bodytheme }) => {
                         id="items2"
                         value={items2}
                         onChange={(event) => setItems2(event.target.value)}
-                    />
+                    /> */}
 
-                    <button className="button-one" type="submit">Add pet</button>
+                    <button className="button-one" type="submit">Add announce</button>
                 </form>
-                {success && <p className="success">Pet added successfully</p>}
+                {success && <p className="success">Announce added successfully</p>}
             </section>
             <Footer />
         </section>

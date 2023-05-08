@@ -3,43 +3,43 @@ import Topbar from '../../components/Topbar';
 import Footer from '../../components/Footer';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { GetPet } from '../../API/api';
+import { GetAnnounce } from '../../API/api';
 import { useNavigate } from 'react-router-dom';
 import Moment from 'moment';
 import { Link } from 'react-router-dom';
 const Single = ({ theme, bodytheme, admin }) => {
     const navigate = useNavigate();
-    const { petID } = useParams();
-    console.log(parseInt(petID));
-    const [getPet, setGetPet] = useState([]);
+    const { announceID } = useParams();
+    console.log(parseInt(announceID));
+    const [getAnnounce, setGetAnnounce] = useState([]);
     //fonction qui recupere les données d'un pet correspondant au petID fournit par le useParams
     useEffect(() => {
 
-        const singlePet = async () => {
+        const singleAnnounce = async () => {
             try {
-                const data = await GetPet(petID);
+                const data = await GetAnnounce(announceID);
                 const theSingle = await data;
-                setGetPet(theSingle)
+                setGetAnnounce(theSingle)
                 console.log(theSingle);
             }
             catch (error) {
                 console.log('Error : ', error);
             }
         }
-        { getPet && singlePet() }
-    }, [petID]);
+        { getAnnounce && singleAnnounce() }
+    }, [announceID]);
 
     const TimeAgo = (timestamp) => {
         const timeAgo = Moment(timestamp).fromNow();
         return <>{timeAgo}</>;
     }
-    const handleUpdate = (e, petID) => {
+    const handleUpdate = (e, announceID) => {
         e.preventDefault();
-        navigate(`/updatepet/${petID}`);
+        navigate(`/updateannounce/${announceID}`);
     }
-    const handleDelete = (e, petID) => {
+    const handleDelete = (e, announceID) => {
         e.preventDefault();
-        console.log(petID);;
+        console.log(announceID);;
     }
     return (
         <>
@@ -48,13 +48,13 @@ const Single = ({ theme, bodytheme, admin }) => {
                 <div className='back-home'>
                     <Link to="/">retour</Link>
                 </div>
-                {getPet.role && (
+                {getAnnounce && (
                     <section className="single-body">
                         <div className={`single-header ${theme}`}>
-                            <img src={getPet.photo} alt="photo pet" />
+                            <img src={getAnnounce.name} alt="photo announce" />
                             <div className="single-header-company">
-                                <h1>{getPet.company}</h1>
-                                <p>{getPet.website}</p>
+                                <h1>{getAnnounce.name}</h1>
+                                <p>{getAnnounce.name}</p>
                             </div>
                             <button className="button-two">
                                 Company Site
@@ -63,28 +63,26 @@ const Single = ({ theme, bodytheme, admin }) => {
                         <article className={`single-article ${theme}`}>
                             <section className='single-article-apply'>
                                 <div>
-                                    <p>{TimeAgo(getPet.postedAt)} . {getPet.contract}</p>
+                                    <p>{TimeAgo(getAnnounce.name)} . {getAnnounce.name}</p>
                                     <div className="single-pos-loc">
-                                        <h1>{getPet.position}</h1>
-                                        <h3 className='single-location'>{getPet.location}</h3>
+                                        <h1>{getAnnounce.name}</h1>
+                                        <h3 className='single-location'>{getAnnounce.name}</h3>
                                     </div>
                                 </div>
                                 <div className="single-btn-apply">
                                     <button className="button-one single-article-btn">Apply Now</button>
                                 </div>
                             </section>
-                            <p>{getPet.description}</p>
+                            <p>{getAnnounce.description}</p>
                             <h1>Requirements</h1>
-                            <p>{getPet.requirements.content}</p>
-                            <ul>{getPet.requirements.items.map(el => <li><p>{el}</p></li>)}</ul>
+                            <p>{getAnnounce}</p>
+
                             <h1>What You Will Do</h1>
-                            <p>{getPet.role.content}</p>
-                            <ol>
-                                {getPet.role.items.map(el => <li><p>{el}</p></li>)}
-                            </ol>
+                            <p>{getAnnounce}</p>
+
                             <div className='single-buttons'>
-                                <button className='button-one' onClick={((e) => { handleUpdate(e, petID) })}>update</button>
-                                <button className='button-two' onCliCk={((e) => { handleDelete(e, petID) })}>delete</button>
+                                <button className='button-one' onClick={((e) => { handleUpdate(e, announceID) })}>update</button>
+                                <button className='button-two' onCliCk={((e) => { handleDelete(e, announceID) })}>delete</button>
                             </div>
                         </article>
 
