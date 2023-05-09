@@ -2,7 +2,7 @@ import './App.css';
 import { Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import Single from './pages/Single';
-import NewSingle from './pages/NewSingle';
+import NewUser from './pages/NewUser';
 import UpdateSingle from './pages/UpdateSingle';
 import Page404 from './pages/Page404';
 import HomeAdmin from './pages/HomeAdmin';
@@ -36,8 +36,14 @@ function App() {
                         path="/announces/:announceID"
                         element={<Single theme={theme} bodytheme={bodyTheme} />} />
                     <Route
-                        path="/newannounce"
-                        element={<NewSingle theme={theme} bodytheme={bodyTheme} />} />
+                        path="/newuser"
+                        element={<NewUser theme={theme} bodytheme={bodyTheme} />} />
+                    <Route
+                        path="/newanimal"
+                        element={<NewAnimal theme={theme} bodytheme={bodyTheme} />} />
+                    <Route
+                        path="/newadress"
+                        element={<NewAdress theme={theme} bodytheme={bodyTheme} />} />
                     <Route
                         path="/updateannounce/:announceID"
                         element={<UpdateSingle theme={theme} bodytheme={bodyTheme} />} />

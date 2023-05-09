@@ -6,7 +6,7 @@ import { CreateAnimal } from '../../API/api.js';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 
-const NewSingle = ({ theme, bodytheme }) => {
+const NewAnimal = ({ theme, bodytheme }) => {
     const navigate = useNavigate();
     const [animalName, setAnimalName] = useState("");
     const [animalRace, setAnimalRace] = useState("");
@@ -169,4 +169,4 @@ const NewSingle = ({ theme, bodytheme }) => {
 };
 
 
-export default NewSingle;
+export default NewAnimal;
