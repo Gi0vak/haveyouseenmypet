@@ -58,4 +58,9 @@ const createAdress = (req, res) => {
 };
 
 
-
+module.exports = {
+    getAnnounces,
+    getAnnounce,
+    createUser,
+    createAdress
+};
