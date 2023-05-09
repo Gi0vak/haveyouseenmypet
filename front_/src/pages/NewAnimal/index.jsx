@@ -5,7 +5,8 @@ import { useEffect, useState } from 'react';
 import { CreateAnimal } from '../../API/api.js';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
-
+import { useContext } from 'react';
+import { IdContext } from '../../context/IdContext';
 const NewAnimal = ({ theme, bodytheme }) => {
     const navigate = useNavigate();
     const [animalName, setAnimalName] = useState("");
@@ -16,7 +17,9 @@ const NewAnimal = ({ theme, bodytheme }) => {
     const [description, setDescription] = useState("");
     const [imageURL, setImageURL] = useState("");
     const [success, setSuccess] = useState(false);
+    const { idUser, setIdUser } = useContext(IdContext);
 
+    console.log("idUser :", idUser);
     const handleSubmitCreate = async (e) => {
         e.preventDefault()
         const newAnimal = {

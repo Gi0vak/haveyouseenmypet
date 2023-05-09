@@ -2,42 +2,44 @@ import './index.css';
 import Topbar from '../../components/Topbar';
 import Footer from '../../components/Footer';
 import { useEffect, useState } from 'react';
-import { CreateAnimal } from '../../API/api.js';
+import { CreateUser } from '../../API/api.js';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
+import { useContext } from 'react';
+import { IdContext } from '../../context/IdContext';
 
 const NewUser = ({ theme, bodytheme }) => {
     const navigate = useNavigate();
-    const [animalName, setAnimalName] = useState("");
-    const [animalRace, setAnimalRace] = useState("");
-    const [animalAge, setAnimalAge] = useState("");
-    const [animalSexe, setAnimalSexe] = useState("");
-    const [animalPoids, setAnimalPoids] = useState("");
-    const [description, setDescription] = useState("");
-    const [imageURL, setImageURL] = useState("");
+    const [userFirstname, setUserFirstName] = useState("");
+    const [userSurname, setUserSurname] = useState("");
+    const [userPhone, setUserPhone] = useState("");
+    const [userMail, setUserMail] = useState("");
+    const [userPassword, setUserPassword] = useState("");
+    const [userPasswordConfirm, setUserPasswordConfirm] = useState("");
     const [success, setSuccess] = useState(false);
+    const { idUser, setIdUser } = useContext(IdContext);
 
     const handleSubmitCreate = async (e) => {
         e.preventDefault()
-        const newAnimal = {
-            name: animalName,
-            race: animalRace,
-            age: animalAge,
-            puce: 1,
-            sexe: animalSexe,
-            couleur: animalSexe,
-            poids: animalPoids,
-            adresseId: 1,
-            utilisateurId: 1,
-            description: description,
-            imageURL: imageURL,
+        const newuser = {
+            nom: userSurname,
+            prenom: userFirstname,
+            telephone: userPhone,
+            mail: userMail,
+            password: userPassword
         };
         try {
-            await CreateAnimal(newAnimal);
-            navigate("/admin");
+            const userData = await CreateUser(newuser);
+            setIdUser(userData.insertId);
+            console.log("idUser :", idUser);
+            if (idUser) {
+                navigate("/newanimal");
+            } else {
+                alert('mauvais utilisateur !')
+            }
 
         } catch (error) {
-            console.log('Error creating Animal:', error);
+            console.log('Error creating user:', error);
         }
 
     };
@@ -51,115 +53,55 @@ const NewUser = ({ theme, bodytheme }) => {
                     <Link to="/admin">annuler</Link>
                 </div>
                 <form className={`new-single-form ${theme}`} onSubmit={handleSubmitCreate}>
-                    <h2>Animal</h2>
+                    <h2>Utilisateur</h2>
 
-                    <label htmlFor="animal-Name">Animal name</label>
+                    <label htmlFor="user-name">nom</label>
                     <input
                         type="text"
-                        id="animal-Name"
-                        value={animalName}
-                        onChange={(event) => setAnimalName(event.target.value)}
+                        id="user-surname"
+                        value={userSurname}
+                        onChange={(event) => setUserSurname(event.target.value)}
                     />
 
-                    <label htmlFor="Race-name">Race</label>
+                    <label htmlFor="user-firstname">Prénom</label>
                     <input
                         type="text"
-                        id="animal-race"
-                        value={animalRace}
-                        onChange={(event) => setAnimalRace(event.target.value)}
+                        id="user-firstname"
+                        value={userFirstname}
+                        onChange={(event) => setUserFirstName(event.target.value)}
                     />
 
-                    <label htmlFor="logo">age</label>
+                    <label htmlFor="phone">Telephone</label>
                     <input
                         type="text"
-                        id="animal-age"
-                        value={animalAge}
+                        id="user-phone"
+                        value={userPhone}
                         placeholder='logo foot par défaut'
-                        onChange={(event) => setAnimalAge(event.target.value)}
+                        onChange={(event) => setUserPhone(event.target.value)}
                     />
 
-                    <label htmlFor="sexe">sexe</label>
+                    <label htmlFor="mail">mail</label>
                     <input
                         type="text"
-                        id="animal-sexe"
-                        value={animalSexe}
-                        onChange={(event) => setAnimalSexe(event.target.value)}
+                        id="user-mail"
+                        value={userMail}
+                        onChange={(event) => setUserMail(event.target.value)}
                     />
-                    <label htmlFor="poids">poids</label>
+                    <label htmlFor="password">password</label>
                     <input
-                        type="text"
-                        id="animal-poids"
-                        value={animalPoids}
-                        onChange={(event) => setAnimalPoids(event.target.value)}
+                        type="password"
+                        id="user-password"
+                        value={userPassword}
+                        onChange={(event) => setUserPassword(event.target.value)}
                     />
-                    <label htmlFor="animal-description">description</label>
-                    <textarea
-                        id="animal-description"
-                        value={description}
-                        onChange={(event) => setDescription(event.target.value)}
-                    ></textarea>
-                    <label htmlFor="poids">photo</label>
+                    <label htmlFor="password confirm">password confirm</label>
                     <input
-                        type="text"
-                        id="animal-poids"
-                        value={imageURL}
-                        onChange={(event) => setImageURL(event.target.value)}
+                        type="password"
+                        id="user-password-confirm"
+                        value={userPasswordConfirm}
+                        onChange={(event) => setUserPasswordConfirm(event.target.value)}
                     />
-                    {/* <h2>User</h2>
-                    <label htmlFor="location"></label>
-                    <input
-                        type="text"
-                        id="location"
-                        value={location}
-                        onChange={(event) => setLocation(event.target.value)}
-                    />
-
-                    <label htmlFor="website">Website</label>
-                    <input
-                        type="text"
-                        id="website"
-                        value={website}
-                        onChange={(event) => setWebsite(event.target.value)}
-                    />
-
-                    <label htmlFor="apply">Apply</label>
-                    <input
-                        type="text"
-                        id="apply"
-                        value={apply}
-                        onChange={(event) => setApply(event.target.value)}
-                    />
-
-                    <label htmlFor="content">content</label>
-                    <input
-                        type="text"
-                        id="content"
-                        value={content}
-                        onChange={(event) => setContent(event.target.value)}
-                    />
-                    <label htmlFor="items">items</label>
-                    <input
-                        type="text"
-                        id="items"
-                        value={items}
-                        onChange={(event) => setItems(event.target.value)}
-                    />
-                    <label htmlFor="content2">content2</label>
-                    <input
-                        type="text"
-                        id="content2"
-                        value={content2}
-                        onChange={(event) => setContent2(event.target.value)}
-                    />
-                    <label htmlFor="items2">items2</label>
-                    <input
-                        type="text"
-                        id="items2"
-                        value={items2}
-                        onChange={(event) => setItems2(event.target.value)}
-                    /> */}
-
-                    <button className="button-one" type="submit">Add announce</button>
+                    <button className="button-one" type="submit">Add user</button>
                 </form>
                 {success && <p className="success">Announce added successfully</p>}
             </section>

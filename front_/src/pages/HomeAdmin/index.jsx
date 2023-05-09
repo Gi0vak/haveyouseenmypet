@@ -55,7 +55,7 @@ const Home = ({ theme, bodytheme }) => {
                 <div className='admin-back-home'>
                     <Link to="/">Home</Link>
                 </div>
-                <Link to="/newannounce" >
+                <Link to="/newuser" >
                     <button className='button-one add-announce-btn'>
                         Add an announce
                     </button>
