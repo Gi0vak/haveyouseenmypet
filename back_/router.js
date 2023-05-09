@@ -1,21 +1,16 @@
-const app = express();
 // définition des routes API
-
+const router = require("express").Router();
+const { getAnnounces, getAnnounce, createAnimal, createUser, createAdress } = require("./controllers/Pet");
 
 router.get("/", (req, res) => {
     res.send("Let's build a CRUD API!");
 });
 
-router.get("/api/search", getSearch);
+router.get("/api/announces", getAnnounces);
+router.get("/api/announces/:id", getAnnounce);
+router.post("/api/users", createUser);
+router.post("/api/adresses", createAdress);
+router.post("/api/animals", createAnimal);
 
-
-
-router.get("/api/pets/:petID", getPet);
-
-router.post("/api/pets", createPet);
-
-router.put("/api/pets/:petID", updatePet);
-
-router.delete("/api/pets/:petID", deletePet);
 
 module.exports = router;

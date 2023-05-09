@@ -1,9 +1,9 @@
 import './index.css';
-import PetCard from './PetCard';
+import AnnounceCard from './AnnounceCard';
 import { useEffect, useState } from 'react';
 
 
-const PetCards = ({
+const AnnouceCards = ({
     datas,
     handleMore,
     handleUpdate,
@@ -17,7 +17,7 @@ const PetCards = ({
                 {datas && datas.map((el, index) => {
 
                     return (
-                        <PetCard
+                        <AnnounceCard
                             key={index}
                             name={el.name}
                             logo={el.imageURL}
@@ -38,4 +38,4 @@ const PetCards = ({
 
     );
 };
-export default PetCards;
+export default AnnouceCards;
