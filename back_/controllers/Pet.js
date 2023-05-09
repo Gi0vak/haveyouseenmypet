@@ -59,17 +59,11 @@ const createAdress = (req, res) => {
     });
 };
 
-<<<<<<< Updated upstream
 
-=======
->>>>>>> Stashed changes
+
 module.exports = {
     getAnnounces,
     getAnnounce,
     createUser,
     createAdress
 };
-<<<<<<< Updated upstream
-=======
-
->>>>>>> Stashed changes
