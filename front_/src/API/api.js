@@ -19,10 +19,11 @@ export const GetAnnounces = async () => {
         console.log('Error : ', error);
     }
 };
+
 export const GetAnnounce = async (id) => {
     try {
         const response = await fetch(
-            `http://localhost:8000/api/announce/${id}`
+            `http://localhost:8000/api/announces/${id}`
         );
         const data = await response.json();
         return data;

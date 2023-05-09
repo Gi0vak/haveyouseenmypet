@@ -15,7 +15,13 @@ const getAnnounces = (req, res) => {
 };
 const getAnnounce = (req, res) => {
     const { id } = req.params;
-    const sql = `SELECT animal.id, animal.name, animal.sexe, animal.race, animal.couleur, animal.imageURL, adresse_perte.code_postal, annonce.date_perte FROM annonce INNER JOIN animal ON annonce.animalId = animal.id INNER JOIN adresse_perte ON annonce.adresse_perteId = adresse_perte.id WHERE annonce.id = ?`;
+    const sql = `SELECT animal.id, animal.name, animal.sexe, animal.race, animal.couleur, animal.imageURL, animal.puce, animal.age, animal.description, adresse_perte.code_postal, annonce.date_perte, utilisateur.prenom, utilisateur.nom, adresse_perte.ville, adresse_perte.adresse_premiere_ligne
+    FROM annonce 
+    INNER JOIN animal ON annonce.animalId = animal.id 
+    INNER JOIN adresse_perte ON annonce.adresse_perteId = adresse_perte.id 
+    INNER JOIN utilisateur ON annonce.utilisateurId = utilisateur.id 
+    WHERE annonce.id = ?`;
+
 
     connection.query(sql, [id], (err, result) => {
         if (err) {
