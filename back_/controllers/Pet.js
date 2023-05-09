@@ -39,8 +39,10 @@ const createUser = (req, res) => {
             console.error("Erreur lors de l'exécution de la requête : ", err);
             res.status(500).send("Erreur lors de la création de l'utilisateur");
         } else {
+            console.log(result);
             res.send(result);
         }
+
     });
 };
 

@@ -5,6 +5,8 @@ import { useEffect, useState } from 'react';
 import { CreateUser } from '../../API/api.js';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
+import { useContext } from 'react';
+import { IdContext } from '../../context/IdContext';
 
 const NewUser = ({ theme, bodytheme }) => {
     const navigate = useNavigate();
@@ -15,6 +17,7 @@ const NewUser = ({ theme, bodytheme }) => {
     const [userPassword, setUserPassword] = useState("");
     const [userPasswordConfirm, setUserPasswordConfirm] = useState("");
     const [success, setSuccess] = useState(false);
+    const { idUser, setIdUser } = useContext(IdContext);
 
     const handleSubmitCreate = async (e) => {
         e.preventDefault()
@@ -26,8 +29,14 @@ const NewUser = ({ theme, bodytheme }) => {
             password: userPassword
         };
         try {
-            await CreateUser(newuser);
-            navigate("/useranimal");
+            const userData = await CreateUser(newuser);
+            setIdUser(userData.insertId);
+            console.log("idUser :", idUser);
+            if (idUser) {
+                navigate("/newanimal");
+            } else {
+                alert('mauvais utilisateur !')
+            }
 
         } catch (error) {
             console.log('Error creating user:', error);
@@ -92,7 +101,7 @@ const NewUser = ({ theme, bodytheme }) => {
                         value={userPasswordConfirm}
                         onChange={(event) => setUserPasswordConfirm(event.target.value)}
                     />
-                    <button className="button-one" type="submit">Add announce</button>
+                    <button className="button-one" type="submit">Add user</button>
                 </form>
                 {success && <p className="success">Announce added successfully</p>}
             </section>

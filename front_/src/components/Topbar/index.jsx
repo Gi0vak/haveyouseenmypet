@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import Topbar from '../../assets/pictures/Topbar.png';
 import sun from '../../assets/pictures/sun.png';
 import moon from '../../assets/pictures/moon.png';
-import { ThemeContext } from '../../ThemeContext';
+import { ThemeContext } from '../../context/ThemeContext';
 import { useContext } from 'react';
 
 const Navbar = () => {

@@ -3,7 +3,7 @@ import location from "../../assets/pictures/location.svg";
 import { GetSearch } from "../../API/api";
 import { useState, useEffect } from 'react';
 import Media from 'react-media';
-import { ThemeContext } from '../../ThemeContext';
+import { ThemeContext } from '../../context/ThemeContext';
 import { useContext } from 'react';
 import './index.css';
 

@@ -5,7 +5,7 @@ import filter from "../../assets/pictures/filter.svg";
 import location from "../../assets/pictures/location.svg";
 import { useState, useEffect } from 'react';
 import './index.css';
-import { ThemeContext } from '../../ThemeContext';
+import { ThemeContext } from '../../context/ThemeContext';
 import { useContext } from 'react';
 
 
