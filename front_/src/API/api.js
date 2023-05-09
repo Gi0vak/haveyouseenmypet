@@ -1,7 +1,7 @@
-export const GetPets = async () => {
+export const GetAnnounces = async () => {
     try {
         const response = await fetch(
-            `http://localhost:8000/api/pets`
+            `http://localhost:8000/api/announces`
         );
 
         if (!response.ok) { // Vérifie si la réponse n' est OK (statut HTTP 200-299)
@@ -21,12 +21,14 @@ export const GetPets = async () => {
         console.log('Error : ', error);
     }
 };
-export const GetPet = async (id) => {
+
+export const GetAnnounce = async (id) => {
     try {
-        const response = await fetch(`http://localhost:8000/api/pets/${id}`);
-        if (!response.ok) {
-            throw new Error('Réponse de serveur non valide');
-        }
+
+        const response = await fetch(
+            `http://localhost:8000/api/announces/${id}`
+        );
+
         const data = await response.json();
         return data;
     } catch (error) {
@@ -34,12 +36,13 @@ export const GetPet = async (id) => {
     }
 };
 
-export const DeletePet = async (id) => {
+export const DeleteAnnounce = async (id) => {
+
 
     if (id) {
         try {
             const response = await fetch(
-                `http://localhost:8000/api/pets/${id}`
+                `http://localhost:8000/api/announce/${id}`
                 , {
                     method: 'DELETE',
                     headers: {
@@ -54,7 +57,6 @@ export const DeletePet = async (id) => {
         }
     }
 }
-
 export const GetSearch = async (build) => {
     console.log('build :', build);
     try {
@@ -66,34 +68,63 @@ export const GetSearch = async (build) => {
         console.log('Error : ', error);
     }
 };
-
-
-export const CreatePet = async (petDatas) => {
+export const CreateAnimal = async (animalDatas) => {
     try {
-        const response = await fetch(`http://localhost:8000/api/pets`, {
+        const response = await fetch(`http://localhost:8000/api/animals`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify(petDatas),
+            body: JSON.stringify(animalDatas),
         });
         const data = await response.json();
-        console.log('createPet :', data);
+        console.log('createAnimal :', data);
         return data;
     } catch (error) {
         console.log('Error : ', error);
     }
 };
-
-export const UpdatePet = async (newpet, id) => {
-    console.log('newpet :', newpet, id);
+export const CreateAnnounce = async (date) => {
     try {
-        const response = await fetch(`http://localhost:8000/api/pets/${id}`, {
+        const response = await fetch(`http://localhost:8000/api/users`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(date),
+        });
+        const data = await response.json();
+        console.log('createUsers :', data);
+        return data;
+    } catch (error) {
+        console.log('Error : ', error);
+    }
+};
+export const CreateUser = async (usersDatas) => {
+    try {
+        const response = await fetch(`http://localhost:8000/api/users`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(usersDatas),
+        });
+        const data = await response.json();
+        console.log('createUsers :', data);
+        return data;
+    } catch (error) {
+        console.log('Error : ', error);
+    }
+};
+export const UpdateAnnounce = async (newannounce, id) => {
+    console.log('newannounce :', newannounce, id);
+    try {
+        const response = await fetch(`http://localhost:8000/api/announces/${id}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify(newpet),
+            body: JSON.stringify(newannounce),
         });
 
     } catch (error) {

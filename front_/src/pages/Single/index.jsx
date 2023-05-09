@@ -3,43 +3,50 @@ import Topbar from '../../components/Topbar';
 import Footer from '../../components/Footer';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { GetPet } from '../../API/api';
+import { GetAnnounce } from '../../API/api';
 import { useNavigate } from 'react-router-dom';
 import Moment from 'moment';
 import { Link } from 'react-router-dom';
 const Single = ({ theme, bodytheme, admin }) => {
     const navigate = useNavigate();
-    const { petID } = useParams();
-    // console.log((petID));
-    const [getPet, setGetPet] = useState([]);
+
+    const { announceID } = useParams();
+    console.log(parseInt(announceID));
+    const [getAnnounce, setGetAnnounce] = useState([]);
+
     //fonction qui recupere les données d'un pet correspondant au petID fournit par le useParams
     useEffect(() => {
 
-        const singlePet = async () => {
+        const singleAnnounce = async () => {
             try {
-                const data = await GetPet(petID);
+                const data = await GetAnnounce(announceID);
+                // console.log(announceID);
                 const theSingle = await data;
-                setGetPet(theSingle)
-                // console.log(theSingle);
+
+                setGetAnnounce(theSingle[0])
+                console.log(theSingle[0]);
+
             }
             catch (error) {
                 console.log('Error : ', error);
             }
         }
-        { getPet && singlePet() }
-    }, [petID]);
+        { getAnnounce && singleAnnounce() }
+    }, [announceID]);
 
     const TimeAgo = (timestamp) => {
         const timeAgo = Moment(timestamp).fromNow();
         return <>{timeAgo}</>;
     }
-    const handleUpdate = (e, petID) => {
+    const handleUpdate = (e, announceID) => {
         e.preventDefault();
-        navigate(`/updatepet/${petID}`);
+        navigate(`/updateannounce/${announceID}`);
     }
-    const handleDelete = (e, petID) => {
+    const handleDelete = (e, announceID) => {
         e.preventDefault();
-        console.log(petID);
+
+        console.log(announceID);;
+
     }
     return (
         <>
@@ -48,36 +55,50 @@ const Single = ({ theme, bodytheme, admin }) => {
                 <div className='back-home'>
                     <Link to="/">retour</Link>
                 </div>
-                {getPet && (
+
+                {getAnnounce && (
                     <section className="single-body">
                         <div className={`single-header ${theme}`}>
-                            <img src="" alt="photo pet" />
+                            <img src={getAnnounce.imageURL} alt="photo announce" />
                             <div className="single-header-company">
-                                <h1>{getPet.name}</h1>
-                                <p></p>
+                                <h1>nom animal : {getAnnounce.name}</h1>
+
                             </div>
-                            <button className="button-two">
-                                {getPet.name}
-                            </button>
+                            {/* <button className="button-two">
+                                Company Site
+                            </button> */}
+
                         </div>
                         <article className={`single-article ${theme}`}>
                             <section className='single-article-apply'>
                                 <div>
-                                    <p>{TimeAgo()} . {getPet}</p>
+
+                                    <p>{TimeAgo(getAnnounce.date_perte)} </p>
                                     <div className="single-pos-loc">
-                                        <h1>{getPet}</h1>
-                                        <h3 className='single-location'>{getPet}</h3>
+                                        <h1>couleur : {getAnnounce.couleur}</h1>
+                                        <h1>sexe : {getAnnounce.sexe}</h1>
+                                        <h1>race : {getAnnounce.race}</h1>
+                                        <h1>age : {getAnnounce.age}</h1>
+                                        <h1>puce : {getAnnounce.puce}</h1>
+                                        <h1>code postal : {getAnnounce.code_postal}</h1>
+                                        <h1>nom proprietaire : {getAnnounce.nom}</h1>
+                                        <h1>prenom proprietaire : {getAnnounce.prenom}</h1>
+                                        <p>description: {getAnnounce.description}</p>
+                                        <h1>ligne 1 adresse : {getAnnounce.adresse_premiere_ligne}</h1>
+                                        <h1>ville : {getAnnounce.ville}</h1>
+
+
                                     </div>
                                 </div>
                                 <div className="single-btn-apply">
-                                    <button className="button-one single-article-btn">Apply Now</button>
+                                    {/* <button className="button-one single-article-btn">Apply Now</button> */}
                                 </div>
                             </section>
 
 
                             <div className='single-buttons'>
-                                <button className='button-one' onClick={((e) => { handleUpdate(e, petID) })}>update</button>
-                                <button className='button-two' onCliCk={((e) => { handleDelete(e, petID) })}>delete</button>
+                                <button className='button-one' onClick={((e) => { handleUpdate(e, announceID) })}>update</button>
+                                <button className='button-two' onCliCk={((e) => { handleDelete(e, announceID) })}>delete</button>
                             </div>
                         </article>
 

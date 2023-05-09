@@ -1,41 +1,41 @@
 import './index.css';
-import PetCards from '../../components/PetCards';
+import AnnounceCards from '../../components/AnnounceCards';
 import Topbar from '../../components/Topbar';
 import SearchBar from '../../components/Searchbar';
 import SearchbarMobile from '../../components/SearchbarMobile';
 import { useEffect, useState } from 'react';
 import Media from 'react-media';
-import { GetPets } from '../../API/api';
+import { GetAnnounces } from '../../API/api';
 import { Link } from 'react-router-dom';
-import { UpdatePet } from '../../API/api';
+import { UpdateAnnounce } from '../../API/api';
 const Home = ({ theme, bodytheme }) => {
-    const [getPets, setGetPets] = useState([]);
+    const [getAnnounces, setGetAnnounces] = useState([]);
     const [n, setN] = useState(12);
 
 
     useEffect(() => {
-        const awaitPets = async () => {
+        const awaitAnnounces = async () => {
             try {
-                const data = await GetPets();
+                const data = await GetAnnounces();
                 const dataOrder = await data.sort((a, b) => new Date(b.postedAt) - new Date(a.postedAt));
-                setGetPets(dataOrder.slice(0, n));
-                console.log('first data : ', getPets);
+                setGetAnnounces(dataOrder.slice(0, n));
+                console.log('first data : ', getAnnounces);
             }
             catch (error) {
                 console.log('Error : ', error);
             }
         }
-        awaitPets();
+        awaitAnnounces();
     }, [n]);
 
     const handleMore = (e) => {
         e.preventDefault()
         setN(n => n + 12);
-        setGetPets(getPets.slice(0, n));
+        setGetAnnounces(getAnnounces.slice(0, n));
     }
     const handleUpdate = async (id) => {
         try {
-            const res = await UpdatePet(id)
+            const res = await UpdateAnnounce(id)
             console.log(res);
 
         } catch (error) {
@@ -43,7 +43,7 @@ const Home = ({ theme, bodytheme }) => {
         }
     }
     const handleSearch = (dataSearch) => {
-        setGetPets(dataSearch)
+        setGetAnnounces(dataSearch)
 
     }
     return (
@@ -55,16 +55,16 @@ const Home = ({ theme, bodytheme }) => {
                 <div className='admin-back-home'>
                     <Link to="/">Home</Link>
                 </div>
-                <Link to="/newpet" >
-                    <button className='button-one add-pet-btn'>
-                        Add a pet
+                <Link to="/newannounce" >
+                    <button className='button-one add-announce-btn'>
+                        Add an announce
                     </button>
                 </Link>
                 <Media query="(max-width: 780px)">
                     {matches => matches ? <SearchbarMobile /> : <SearchBar />}
                 </Media>
-                <PetCards
-                    datas={getPets}
+                <AnnounceCards
+                    datas={getAnnounces}
                     handleMore={handleMore}
                     handleSearch={handleSearch}
                     handleUpdate={handleUpdate}
