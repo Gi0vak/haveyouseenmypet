@@ -3,6 +3,7 @@ export const GetPets = async () => {
         const response = await fetch(
             `http://localhost:8000/api/pets`
         );
+
         if (!response.ok) { // Vérifie si la réponse n' est OK (statut HTTP 200-299)
             throw new Error('Network response was not ok');
         }
@@ -14,6 +15,7 @@ export const GetPets = async () => {
             throw new TypeError('Response was not JSON');
         }
         const data = await response.json();
+        // console.log(data);
         return data;
     } catch (error) {
         console.log('Error : ', error);
@@ -21,15 +23,17 @@ export const GetPets = async () => {
 };
 export const GetPet = async (id) => {
     try {
-        const response = await fetch(
-            `http://localhost:8000/api/pets/${id}`
-        );
+        const response = await fetch(`http://localhost:8000/api/pets/${id}`);
+        if (!response.ok) {
+            throw new Error('Réponse de serveur non valide');
+        }
         const data = await response.json();
         return data;
     } catch (error) {
-        console.log('Error : ', error);
+        console.log('Erreur : ', error);
     }
 };
+
 export const DeletePet = async (id) => {
 
     if (id) {

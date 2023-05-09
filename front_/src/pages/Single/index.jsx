@@ -10,7 +10,7 @@ import { Link } from 'react-router-dom';
 const Single = ({ theme, bodytheme, admin }) => {
     const navigate = useNavigate();
     const { petID } = useParams();
-    console.log(parseInt(petID));
+    // console.log((petID));
     const [getPet, setGetPet] = useState([]);
     //fonction qui recupere les données d'un pet correspondant au petID fournit par le useParams
     useEffect(() => {
@@ -20,7 +20,7 @@ const Single = ({ theme, bodytheme, admin }) => {
                 const data = await GetPet(petID);
                 const theSingle = await data;
                 setGetPet(theSingle)
-                console.log(theSingle);
+                // console.log(theSingle);
             }
             catch (error) {
                 console.log('Error : ', error);
@@ -39,7 +39,7 @@ const Single = ({ theme, bodytheme, admin }) => {
     }
     const handleDelete = (e, petID) => {
         e.preventDefault();
-        console.log(petID);;
+        console.log(petID);
     }
     return (
         <>
@@ -48,40 +48,33 @@ const Single = ({ theme, bodytheme, admin }) => {
                 <div className='back-home'>
                     <Link to="/">retour</Link>
                 </div>
-                {getPet.role && (
+                {getPet && (
                     <section className="single-body">
                         <div className={`single-header ${theme}`}>
-                            <img src={getPet.photo} alt="photo pet" />
+                            <img src="" alt="photo pet" />
                             <div className="single-header-company">
-                                <h1>{getPet.company}</h1>
-                                <p>{getPet.website}</p>
+                                <h1>{getPet.name}</h1>
+                                <p></p>
                             </div>
                             <button className="button-two">
-                                Company Site
+                                {getPet.name}
                             </button>
                         </div>
                         <article className={`single-article ${theme}`}>
                             <section className='single-article-apply'>
                                 <div>
-                                    <p>{TimeAgo(getPet.postedAt)} . {getPet.contract}</p>
+                                    <p>{TimeAgo()} . {getPet}</p>
                                     <div className="single-pos-loc">
-                                        <h1>{getPet.position}</h1>
-                                        <h3 className='single-location'>{getPet.location}</h3>
+                                        <h1>{getPet}</h1>
+                                        <h3 className='single-location'>{getPet}</h3>
                                     </div>
                                 </div>
                                 <div className="single-btn-apply">
                                     <button className="button-one single-article-btn">Apply Now</button>
                                 </div>
                             </section>
-                            <p>{getPet.description}</p>
-                            <h1>Requirements</h1>
-                            <p>{getPet.requirements.content}</p>
-                            <ul>{getPet.requirements.items.map(el => <li><p>{el}</p></li>)}</ul>
-                            <h1>What You Will Do</h1>
-                            <p>{getPet.role.content}</p>
-                            <ol>
-                                {getPet.role.items.map(el => <li><p>{el}</p></li>)}
-                            </ol>
+
+
                             <div className='single-buttons'>
                                 <button className='button-one' onClick={((e) => { handleUpdate(e, petID) })}>update</button>
                                 <button className='button-two' onCliCk={((e) => { handleDelete(e, petID) })}>delete</button>
@@ -91,7 +84,7 @@ const Single = ({ theme, bodytheme, admin }) => {
                     </section>
                 )}
 
-            </div>
+            </div >
             <Footer />
         </>
     )

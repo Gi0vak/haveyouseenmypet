@@ -9,7 +9,7 @@ import { GetPets } from '../../API/api';
 import { Link } from 'react-router-dom';
 const Home = ({ theme, bodytheme }) => {
     const [getPets, setGetPets] = useState([]);
-    const [n, setN] = useState(12);
+    const [n, setN] = useState(1);
 
 
 
