@@ -3,6 +3,8 @@ import { Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import Single from './pages/Single';
 import NewUser from './pages/NewUser';
+import NewAnimal from './pages/NewAnimal';
+import NewAdress from './pages/NewAdress';
 import UpdateSingle from './pages/UpdateSingle';
 import Page404 from './pages/Page404';
 import HomeAdmin from './pages/HomeAdmin';
