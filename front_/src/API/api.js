@@ -3,6 +3,7 @@ export const GetAnnounces = async () => {
         const response = await fetch(
             `http://localhost:8000/api/announces`
         );
+
         if (!response.ok) { // Vérifie si la réponse n' est OK (statut HTTP 200-299)
             throw new Error('Network response was not ok');
         }
@@ -14,23 +15,29 @@ export const GetAnnounces = async () => {
             throw new TypeError('Response was not JSON');
         }
         const data = await response.json();
+        // console.log(data);
         return data;
     } catch (error) {
         console.log('Error : ', error);
     }
 };
+
 export const GetAnnounce = async (id) => {
     try {
+
         const response = await fetch(
-            `http://localhost:8000/api/announce/${id}`
+            `http://localhost:8000/api/announces/${id}`
         );
+
         const data = await response.json();
         return data;
     } catch (error) {
-        console.log('Error : ', error);
+        console.log('Erreur : ', error);
     }
 };
+
 export const DeleteAnnounce = async (id) => {
+
 
     if (id) {
         try {

@@ -8,8 +8,10 @@ import Media from 'react-media';
 import { GetAnnounces } from '../../API/api';
 import { Link } from 'react-router-dom';
 const Home = ({ theme, bodytheme }) => {
+
     const [getAnnounces, setGetAnnounces] = useState([]);
     const [n, setN] = useState(12);
+
 
 
 

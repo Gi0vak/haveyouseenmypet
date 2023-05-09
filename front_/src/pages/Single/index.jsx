@@ -9,18 +9,23 @@ import Moment from 'moment';
 import { Link } from 'react-router-dom';
 const Single = ({ theme, bodytheme, admin }) => {
     const navigate = useNavigate();
+
     const { announceID } = useParams();
     console.log(parseInt(announceID));
     const [getAnnounce, setGetAnnounce] = useState([]);
+
     //fonction qui recupere les données d'un pet correspondant au petID fournit par le useParams
     useEffect(() => {
 
         const singleAnnounce = async () => {
             try {
                 const data = await GetAnnounce(announceID);
+                // console.log(announceID);
                 const theSingle = await data;
-                setGetAnnounce(theSingle)
-                console.log(theSingle);
+
+                setGetAnnounce(theSingle[0])
+                console.log(theSingle[0]);
+
             }
             catch (error) {
                 console.log('Error : ', error);
@@ -39,7 +44,9 @@ const Single = ({ theme, bodytheme, admin }) => {
     }
     const handleDelete = (e, announceID) => {
         e.preventDefault();
+
         console.log(announceID);;
+
     }
     return (
         <>
@@ -48,37 +55,46 @@ const Single = ({ theme, bodytheme, admin }) => {
                 <div className='back-home'>
                     <Link to="/">retour</Link>
                 </div>
+
                 {getAnnounce && (
                     <section className="single-body">
                         <div className={`single-header ${theme}`}>
-                            <img src={getAnnounce.name} alt="photo announce" />
+                            <img src={getAnnounce.imageURL} alt="photo announce" />
                             <div className="single-header-company">
-                                <h1>{getAnnounce.name}</h1>
-                                <p>{getAnnounce.name}</p>
+                                <h1>nom animal : {getAnnounce.name}</h1>
+
                             </div>
-                            <button className="button-two">
+                            {/* <button className="button-two">
                                 Company Site
-                            </button>
+                            </button> */}
+
                         </div>
                         <article className={`single-article ${theme}`}>
                             <section className='single-article-apply'>
                                 <div>
-                                    <p>{TimeAgo(getAnnounce.name)} . {getAnnounce.name}</p>
+
+                                    <p>{TimeAgo(getAnnounce.date_perte)} </p>
                                     <div className="single-pos-loc">
-                                        <h1>{getAnnounce.name}</h1>
-                                        <h3 className='single-location'>{getAnnounce.name}</h3>
+                                        <h1>couleur : {getAnnounce.couleur}</h1>
+                                        <h1>sexe : {getAnnounce.sexe}</h1>
+                                        <h1>race : {getAnnounce.race}</h1>
+                                        <h1>age : {getAnnounce.age}</h1>
+                                        <h1>puce : {getAnnounce.puce}</h1>
+                                        <h1>code postal : {getAnnounce.code_postal}</h1>
+                                        <h1>nom proprietaire : {getAnnounce.nom}</h1>
+                                        <h1>prenom proprietaire : {getAnnounce.prenom}</h1>
+                                        <p>description: {getAnnounce.description}</p>
+                                        <h1>ligne 1 adresse : {getAnnounce.adresse_premiere_ligne}</h1>
+                                        <h1>ville : {getAnnounce.ville}</h1>
+
+
                                     </div>
                                 </div>
                                 <div className="single-btn-apply">
-                                    <button className="button-one single-article-btn">Apply Now</button>
+                                    {/* <button className="button-one single-article-btn">Apply Now</button> */}
                                 </div>
                             </section>
-                            <p>{getAnnounce.description}</p>
-                            <h1>Requirements</h1>
-                            <p>{getAnnounce}</p>
 
-                            <h1>What You Will Do</h1>
-                            <p>{getAnnounce}</p>
 
                             <div className='single-buttons'>
                                 <button className='button-one' onClick={((e) => { handleUpdate(e, announceID) })}>update</button>
@@ -89,7 +105,7 @@ const Single = ({ theme, bodytheme, admin }) => {
                     </section>
                 )}
 
-            </div>
+            </div >
             <Footer />
         </>
     )
