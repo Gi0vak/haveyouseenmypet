@@ -49,9 +49,7 @@ const Home = ({ theme, bodytheme }) => {
     return (
         <>
             <div className={`Home ${bodytheme}`}>
-                <div className="relative">
-                    <Topbar />
-                </div>
+                <Topbar />
                 <div className='admin-back-home'>
                     <Link to="/">Home</Link>
                 </div>

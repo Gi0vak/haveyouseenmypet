@@ -48,9 +48,7 @@ const Home = ({ theme, bodytheme }) => {
                 {/* Home component */}
                 <div className={`Home ${bodytheme}`}>
                     {/* Topbar component */}
-                    <div className="relative">
-                        <Topbar />
-                    </div>
+                    <Topbar />
 
                     {/* Media query for search bar */}
                     {/* <Media query="(max-width: 780px)">

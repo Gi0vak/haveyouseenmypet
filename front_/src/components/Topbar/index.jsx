@@ -15,9 +15,9 @@ const Navbar = () => {
 
     return (
         <>
-            <img src={imgHero} alt="HYSMP? hero" className='topbar-img' />
 
             <section className={`topbar`} >
+                <img src={imgHero} alt="HYSMP? hero" className='topbar-img' />
 
                 <Link className="logo" to="/">
                     <img src={logo2} alt="HYSMP? logo" className='topbar-logo' />
@@ -25,7 +25,6 @@ const Navbar = () => {
 
                 <div className='center'>
                     <img src={admin} alt="admin logo" className='admin-logo' />
-
 
                     <div className='toggle-button'>
                         <img src={sun} alt="sun" className='sun' />
