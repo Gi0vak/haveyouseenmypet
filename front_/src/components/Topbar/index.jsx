@@ -48,7 +48,7 @@ const Navbar = () => {
                 <Link to="/" >
                     <button className='button-one'>J'ai trouvé un animal</button>
                 </Link>
-                <Link to="newuser" >
+                <Link to="/newuser" >
                     <button className='button-two'>J'ai perdu un animal</button>
                 </Link>
             </div>

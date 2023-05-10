@@ -31,8 +31,17 @@
 
 @media screen and (max-width: 768px) {
     .topbar-img {
-        min-width: 800px;
-        max-height: 175px;
+        /* min-width: auto; */
+        max-height: auto;
+    }
+}
+
+@media screen and (max-width: 600px) {
+
+    .topbar {
+        padding: 0 0 35px 0;
+        justify-content: space-around;
+        align-items: center;
     }
 }
 
@@ -108,20 +117,6 @@ input:checked+.slider:before {
 }
 
 
-@media screen and (max-width: 600px) {
-
-    .topbar {
-        padding: 0 0 35px 0;
-        justify-content: space-around;
-        align-items: center;
-    }
-}
-
-button {
-    z-index: 2;
-    position: relative;
-
-}
 
 button {
     z-index: 2;
