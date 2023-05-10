@@ -80,7 +80,7 @@ const createAnnounce = (req, res) => {
         animalId,
         date_perte,
         adresseId } = req.body;
-    const sql = `INSERT INTO announce ( utilisateurId, animalId, date_perte, adresseId ) VALUES (?, ?, ?, ?, ?)`;
+    const sql = `INSERT INTO annonce ( utilisateurId, animalId, date_perte, adresse_perteId ) VALUES (?, ?, ?, ?)`;
     const values = [
         utilisateurId,
         animalId,

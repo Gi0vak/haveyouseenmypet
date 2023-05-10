@@ -52,8 +52,6 @@ const NewAnimal = ({ theme, bodytheme }) => {
             animalId: idAnimal,
             date_perte: new Date(),
             adresseId: idAdress,
-
-
         };
         try {
             await CreateAnnounce(newAnnounce);
@@ -68,13 +66,12 @@ const NewAnimal = ({ theme, bodytheme }) => {
         e.preventDefault()
         try {
             const data = await handleSubmitCreateAnimal(idUser, idAdress);
-            setIdAnimal(data.insertId);
             console.log("animal enregistré en bdd", data.insertId);
         } catch (error) {
             console.log(error);
         }
         try {
-            handleSubmitCreateAnnounce(idUser, idAdress, idAnimal);
+            handleSubmitCreateAnnounce(idAdress, idUser, idAnimal);
         } catch (error) {
             console.log(error);
         }
@@ -111,7 +108,6 @@ const NewAnimal = ({ theme, bodytheme }) => {
                         type="text"
                         id="animal-age"
                         value={animalAge}
-                        placeholder='logo foot par défaut'
                         onChange={(event) => setAnimalAge(event.target.value)}
                     />
                     <label htmlFor="puce">puce</label>
@@ -119,7 +115,6 @@ const NewAnimal = ({ theme, bodytheme }) => {
                         type="text"
                         id="animal-puce"
                         value={animalPuce}
-                        placeholder='logo foot par défaut'
                         onChange={(event) => setAnimalPuce(event.target.value)}
                     />
 

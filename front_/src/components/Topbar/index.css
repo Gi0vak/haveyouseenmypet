@@ -8,9 +8,6 @@
     position: relative;
 }
 
-
-
-
 .topbar {
     position: relative;
     display: flex;
@@ -18,7 +15,8 @@
     padding: 0 5.8rem 30rem 5.8rem;
     justify-content: space-between;
     width: auto;
-    /* min-height: 400px; */
+    min-height: 400px;
+    overflow: hidden;
 }
 
 .topbar-img {
@@ -33,6 +31,9 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
+    position: absolute;
+    top: 31rem;
+    width: 100%;
 }
 
 @media screen and (max-width: 1000px) {

@@ -45,7 +45,7 @@ const Home = ({ theme, bodytheme }) => {
     }
     const handleNewAnnounce = async (e) => {
         e.preventDefault();
-        Navigate("../newuser");
+        Navigate("http://localhost:3000/newuser");
     }
     const handleSearch = (dataSearch) => {
         setGetAnnounces(dataSearch)
