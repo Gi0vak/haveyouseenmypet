@@ -76,12 +76,17 @@ const createAnimal = (req, res) => {
 };
 const createAnnounce = (req, res) => {
     const {
-        adresse_premiere_ligne,
-        adresse_seconde_ligne,
-        ville,
-        code_postal } = req.body;
-    const sql = `INSERT INTO announce (adresse_premiere_ligne, adresse_seconde_ligne, ville,code_postal) VALUES (?, ?, ?, ?, ?)`;
-    const values = [adresse_premiere_ligne, adresse_seconde_ligne, ville, code_postal];
+        utilisateurId,
+        animalId,
+        date_perte,
+        adresseId } = req.body;
+    const sql = `INSERT INTO announce ( utilisateurId, animalId, date_perte, adresseId ) VALUES (?, ?, ?, ?, ?)`;
+    const values = [
+        utilisateurId,
+        animalId,
+        date_perte,
+        adresseId
+    ];
 
     connection.query(sql, values, (err, result) => {
         if (err) {

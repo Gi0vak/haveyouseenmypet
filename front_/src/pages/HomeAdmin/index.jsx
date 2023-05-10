@@ -8,6 +8,7 @@ import Media from 'react-media';
 import { GetAnnounces } from '../../API/api';
 import { Link } from 'react-router-dom';
 import { UpdateAnnounce } from '../../API/api';
+import { Navigate } from 'react-router-dom';
 const Home = ({ theme, bodytheme }) => {
     const [getAnnounces, setGetAnnounces] = useState([]);
     const [n, setN] = useState(12);
@@ -42,6 +43,10 @@ const Home = ({ theme, bodytheme }) => {
             console.log(error);
         }
     }
+    const handleNewAnnounce = async (e) => {
+        e.preventDefault();
+        Navigate("../newuser");
+    }
     const handleSearch = (dataSearch) => {
         setGetAnnounces(dataSearch)
 
@@ -53,11 +58,11 @@ const Home = ({ theme, bodytheme }) => {
                 <div className='admin-back-home'>
                     <Link to="/">Home</Link>
                 </div>
-                <Link to="/newuser" >
-                    <button className='button-one add-announce-btn'>
-                        Add an announce
-                    </button>
-                </Link>
+
+                <button className='button-one add-announce-btn' onClick={handleNewAnnounce}>
+                    Add an announce
+                </button>
+
                 <Media query="(max-width: 780px)">
                     {matches => matches ? <SearchbarMobile /> : <SearchBar />}
                 </Media>

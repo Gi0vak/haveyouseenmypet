@@ -46,7 +46,6 @@ const NewUser = ({ theme, bodytheme }) => {
         };
     }
 
-
     return (
         <section className={`New-single ${bodytheme}`}>
             <Topbar />

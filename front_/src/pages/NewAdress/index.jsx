@@ -86,7 +86,6 @@ const NewAdress = ({ theme, bodytheme }) => {
                         onChange={(event) => setPostalCode(event.target.value)}
                     />
 
-
                     <button className="button-one" type="submit">Add adress</button>
                 </form>
                 {success && <p className="success">Adress added successfully</p>}
