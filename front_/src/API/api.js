@@ -116,6 +116,22 @@ export const CreateUser = async (usersDatas) => {
         console.log('Error : ', error);
     }
 };
+export const CreateAdress = async (usersDatas) => {
+    try {
+        const response = await fetch(`http://localhost:8000/api/adresses`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(usersDatas),
+        });
+        const data = await response.json();
+        console.log('createUsers :', data);
+        return data;
+    } catch (error) {
+        console.log('Error : ', error);
+    }
+};
 export const UpdateAnnounce = async (newannounce, id) => {
     console.log('newannounce :', newannounce, id);
     try {

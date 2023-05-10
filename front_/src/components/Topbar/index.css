@@ -17,7 +17,7 @@
     padding: 0 5.8rem 50rem 5.8rem;
     justify-content: space-between;
     width: auto;
-    height: auto;
+    min-height: 400px;
 }
 
 .topbar-img {

@@ -32,14 +32,16 @@ const NewUser = ({ theme, bodytheme }) => {
             const userData = await CreateUser(newuser);
             setIdUser(userData.insertId);
             console.log("idUser :", idUser);
-            if (idUser) {
-                navigate("/newanimal");
-            } else {
-                alert('mauvais utilisateur !')
-            }
 
         } catch (error) {
             console.log('Error creating user:', error);
+            if (!idUser) {
+                alert('mauvais utilisateur !')
+            }
+        } finally {
+            if (idUser) {
+                navigate("/newadress");
+            }
         }
 
     };
