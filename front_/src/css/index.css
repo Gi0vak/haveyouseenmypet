@@ -115,12 +115,6 @@ label {
     align-self: center;
 }
 
-.buttons {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-
-}
 
 .button-two {
     background-color: var(--red);
