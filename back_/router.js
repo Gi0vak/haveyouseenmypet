@@ -10,7 +10,7 @@ router.get("/api/announces", getAnnounces);
 router.get("/api/announces/:id", getAnnounce);
 router.post("/api/users", createUser);
 router.post("/api/adresses", createAdress);
-// router.post("/api/animals", createAnimal);
+router.post("/api/animals", createAnimal);
 
 
 module.exports = router;
