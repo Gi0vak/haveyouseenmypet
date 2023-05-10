@@ -15,7 +15,7 @@ const NewAdress = ({ theme, bodytheme }) => {
     const [adressSecond, setAdressSecond] = useState("");
     const [town, setTown] = useState("");
     const [postalCode, setPostalCode] = useState("");
-    const [idAdress, setIdAdress] = useContext(IdContext);
+    const { idAdress, setIdAdress } = useContext(IdContext);
 
     const [success, setSuccess] = useState(false);
 
@@ -29,14 +29,15 @@ const NewAdress = ({ theme, bodytheme }) => {
         };
         try {
             const data = await CreateAdress(newAdress)
-            setIdAdress(data.insertId);
-
+            const adress = await data.insertId;
+            console.log("adressId :", adress);
+            if (adress) {
+                setIdAdress(adress);
+                navigate("/newanimal");
+            }
 
         } catch (error) {
             console.log('Error creating Animal:', error);
-        } finally {
-            setSuccess(true);
-            navigate("/newanimal");
         }
 
     };
