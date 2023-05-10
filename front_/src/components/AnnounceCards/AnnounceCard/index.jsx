@@ -1,6 +1,7 @@
 import './index.css';
 import { Link } from 'react-router-dom';
 import Moment from 'moment';
+import 'moment/locale/fr';
 import { DeleteAnnounce } from '../../../API/api.js';
 
 
@@ -17,7 +18,7 @@ const AnnounceCard = ({
 
 
     const TimeAgo = (date) => {
-        const timeAgo = Moment(date).fromNow();
+        const timeAgo = Moment(date).locale('fr').fromNow();
         return <>{timeAgo}</>;
     }
 
@@ -44,8 +45,7 @@ const AnnounceCard = ({
 
                 <h3 className="card-announce-contract-postedAT">
                     {TimeAgo(postedAt)}
-                    <span className='dot'> • </span>
-                    {contract}
+
                 </h3 >
                 <Link className="card-link" admin={admin} to={`/announces/${id}`}>
                     <h1 className="card-announce-position">{name}</h1>

@@ -46,15 +46,15 @@ const Home = ({ theme, bodytheme }) => {
         <>
             {getAnnounces && (<>
                 {/* Home component */}
+                <Topbar />
                 <div className={`Home ${bodytheme}`}>
                     {/* Topbar component */}
-                    <Topbar />
 
                     {/* Media query for search bar */}
-                    {/* <Media query="(max-width: 780px)">
+                    <Media query="(max-width: 780px)">
                         {/* Render mobile search bar if screen is smaller than 780px */}
-                    {/* {matches => matches ? <SearchbarMobile handleSearch={handleSearch} /> : <SearchBar handleSearch={handleSearch} />}
-                    </Media> */}
+                        {matches => matches ? <SearchbarMobile handleSearch={handleSearch} /> : <SearchBar handleSearch={handleSearch} />}
+                    </Media>
 
 
                     {/* Announce cards */}
