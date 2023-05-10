@@ -8,7 +8,6 @@ import Media from 'react-media';
 import { GetAnnounces } from '../../API/api';
 import { Link } from 'react-router-dom';
 const Home = ({ theme, bodytheme }) => {
-
     const [getAnnounces, setGetAnnounces] = useState([]);
     const [n, setN] = useState(12);
 
@@ -20,6 +19,7 @@ const Home = ({ theme, bodytheme }) => {
         const awaitAnnounces = async () => {
             try {
                 const data = await GetAnnounces();
+                console.log('first data : ', data);
                 const dataOrder = await data.sort((a, b) => new Date(b.date_perte) - new Date(a.date_perte));
                 setGetAnnounces(dataOrder.slice(0, n));
 

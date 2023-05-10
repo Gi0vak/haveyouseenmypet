@@ -24,15 +24,18 @@ const NewAnimal = ({ theme, bodytheme }) => {
     const { idAdress } = useContext(IdContext);
     const { idAnimal, setIdAnimal } = useContext(IdContext);
 
+
+
     console.log("idUser :", idUser);
     const handleSubmitCreateAnimal = async (idUser, idAdress) => {
+
         const newAnimal = {
             name: animalName,
             race: animalRace,
             age: animalAge,
             puce: animalPuce,
             sexe: animalSexe,
-            couleur: animalSexe,
+            couleur: animalColor,
             poids: animalWeight,
             adresseId: idAdress,
             utilisateurId: idUser,
@@ -41,39 +44,40 @@ const NewAnimal = ({ theme, bodytheme }) => {
         };
         try {
             const data = await CreateAnimal(newAnimal);
-            setIdAnimal(data.insertId);
+            const idAnimal = await data.insertId;
+            setIdAnimal(idAnimal);
         } catch (error) {
             console.log('Error creating Animal:', error);
         }
     }
     const handleSubmitCreateAnnounce = async (idAdress, idUser, idAnimal) => {
+        const date = new Date();;
+        const sqlDateTime = date.toISOString().slice(0, 19).replace('T', ' ');
         const newAnnounce = {
             utilisateurId: idUser,
             animalId: idAnimal,
-            date_perte: new Date(),
+            date_perte: sqlDateTime,
             adresseId: idAdress,
         };
         try {
-            await CreateAnnounce(newAnnounce);
+            const data = await CreateAnnounce(newAnnounce);
+            console.log(data);
             navigate("/admin");
 
         } catch (error) {
             console.log('Error creating Animal:', error);
         }
-
     }
-    const handleSubmitCreate = async (e) => {
+    const handleSubmitCreate = (e) => {
         e.preventDefault()
-        try {
-            const data = await handleSubmitCreateAnimal(idUser, idAdress);
-            console.log("animal enregistré en bdd", data.insertId);
-        } catch (error) {
-            console.log(error);
-        }
-        try {
-            handleSubmitCreateAnnounce(idAdress, idUser, idAnimal);
-        } catch (error) {
-            console.log(error);
+
+        handleSubmitCreateAnimal(idUser, idAdress);
+
+        console.log("animal enregistré en bdd", idAnimal);
+
+        if (idAnimal) {
+            handleSubmitCreateAnnounce(idAdress, idUser, idAnimal)
+            navigate("/admin");
         }
     };
 

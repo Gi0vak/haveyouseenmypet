@@ -24,7 +24,7 @@ const Single = ({ theme, bodytheme, admin }) => {
                 const theSingle = await data;
 
                 setGetAnnounce(theSingle[0])
-                console.log(theSingle[0]);
+
 
             }
             catch (error) {
@@ -32,6 +32,7 @@ const Single = ({ theme, bodytheme, admin }) => {
             }
         }
         { getAnnounce && singleAnnounce() }
+
     }, [announceID]);
 
     const TimeAgo = (timestamp) => {
@@ -48,6 +49,7 @@ const Single = ({ theme, bodytheme, admin }) => {
         console.log(announceID);;
 
     }
+    console.log("infos annonce ", getAnnounce);
     return (
         <>
             <Topbar />
