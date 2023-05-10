@@ -17,6 +17,7 @@ const Navbar = () => {
 
         <div>
 
+
             <section className={`topbar`} >
                 <img src={imgHero} alt="HYSMP? hero" className='topbar-img' />
 
@@ -42,6 +43,7 @@ const Navbar = () => {
 
 
             </section >
+
             <div className='buttons'>
                 <Link to="/" >
                     <button className='button-one'>J'ai trouvé un animal</button>
@@ -50,6 +52,7 @@ const Navbar = () => {
                     <button className='button-two'>J'ai perdu un animal</button>
                 </Link>
             </div>
+
         </div>
     );
 };
