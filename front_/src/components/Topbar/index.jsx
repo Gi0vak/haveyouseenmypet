@@ -42,18 +42,21 @@ const Navbar = () => {
                 </div >
 
 
+        </div >
+
+
             </section >
 
-            <div className='buttons'>
-                <Link to="/" >
-                    <button className='button-one'>J'ai trouvé un animal</button>
-                </Link>
-                <Link to="newuser" >
-                    <button className='button-two'>J'ai perdu un animal</button>
-                </Link>
-            </div>
+    <div className='buttons'>
+        <Link to="/" >
+            <button className='button-one'>J'ai trouvé un animal</button>
+        </Link>
+        <Link to="newuser" >
+            <button className='button-two'>J'ai perdu un animal</button>
+        </Link>
+    </div>
 
-        </div>
+        </div >
     );
 };
 export default Navbar;
