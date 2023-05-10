@@ -47,9 +47,9 @@ const createUser = (req, res) => {
 };
 
 const createAdress = (req, res) => {
-    const { nom, prenom, telephone, mail, password } = req.body;
-    const sql = `INSERT INTO utilisateur (nom, prenom, telephone, mail, password) VALUES (?, ?, ?, ?, ?)`;
-    const values = [nom, prenom, telephone, mail, password];
+    const { adresse_premiere_ligne, adresse_seconde_ligne, ville, code_postal } = req.body;
+    const sql = `INSERT INTO adresse_perte (adresse_premiere_ligne, adresse_seconde_ligne, ville, code_postal) VALUES (?, ?, ?, ?)`;
+    const values = [adresse_premiere_ligne, adresse_seconde_ligne, ville, code_postal];
 
     connection.query(sql, values, (err, result) => {
         if (err) {
@@ -74,6 +74,24 @@ const createAnimal = (req, res) => {
         }
     });
 };
+const createAnnounce = (req, res) => {
+    const {
+        adresse_premiere_ligne,
+        adresse_seconde_ligne,
+        ville,
+        code_postal } = req.body;
+    const sql = `INSERT INTO announce (adresse_premiere_ligne, adresse_seconde_ligne, ville,code_postal) VALUES (?, ?, ?, ?, ?)`;
+    const values = [adresse_premiere_ligne, adresse_seconde_ligne, ville, code_postal];
+
+    connection.query(sql, values, (err, result) => {
+        if (err) {
+            console.error("Erreur lors de l'exécution de la requête : ", err);
+            res.status(500).send("Erreur lors de la création de l'utilisateur");
+        } else {
+            res.send(result);
+        }
+    });
+};
 
 
 
@@ -82,5 +100,6 @@ module.exports = {
     getAnnounce,
     createUser,
     createAdress,
-    createAnimal
+    createAnimal,
+    createAnnounce
 };

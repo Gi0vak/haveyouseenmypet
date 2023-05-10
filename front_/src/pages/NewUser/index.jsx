@@ -30,21 +30,21 @@ const NewUser = ({ theme, bodytheme }) => {
         };
         try {
             const userData = await CreateUser(newuser);
-            setIdUser(userData.insertId);
-            console.log("idUser :", idUser);
+            const user = await userData.insertId;
+            console.log("idUser :", user);
+            if (user) {
+                setIdUser(user);
+                navigate("/newadress");
+            }
 
         } catch (error) {
             console.log('Error creating user:', error);
             if (!idUser) {
                 alert('mauvais utilisateur !')
             }
-        } finally {
-            if (idUser) {
-                navigate("/newadress");
-            }
-        }
 
-    };
+        };
+    }
 
 
     return (

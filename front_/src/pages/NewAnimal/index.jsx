@@ -20,8 +20,8 @@ const NewAnimal = ({ theme, bodytheme }) => {
     const [description, setDescription] = useState("");
     const [imageURL, setImageURL] = useState("");
     const [success, setSuccess] = useState(false);
-    const { idUser, setIdUser } = useContext(IdContext);
-    const { idAdress, setIdAdress } = useContext(IdContext);
+    const { idUser } = useContext(IdContext);
+    const { idAdress } = useContext(IdContext);
     const { idAnimal, setIdAnimal } = useContext(IdContext);
 
     console.log("idUser :", idUser);
@@ -46,19 +46,14 @@ const NewAnimal = ({ theme, bodytheme }) => {
             console.log('Error creating Animal:', error);
         }
     }
-    const handleSubmitCreateAnnounce = async () => {
+    const handleSubmitCreateAnnounce = async (idAdress, idUser, idAnimal) => {
         const newAnnounce = {
-            name: animalName,
-            race: animalRace,
-            age: animalAge,
-            puce: animalPuce,
-            sexe: animalSexe,
-            couleur: animalSexe,
-            poids: animalWeight,
-            adresseId: idAdress,
             utilisateurId: idUser,
-            description: description,
-            imageURL: imageURL,
+            animalId: idAnimal,
+            date_perte: new Date(),
+            adresseId: idAdress,
+
+
         };
         try {
             await CreateAnnounce(newAnnounce);
