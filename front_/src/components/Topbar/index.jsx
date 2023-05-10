@@ -17,7 +17,6 @@ const Navbar = () => {
 
         <div>
 
-
             <section className={`topbar`} >
                 <img src={imgHero} alt="HYSMP? hero" className='topbar-img' />
 
@@ -57,4 +56,5 @@ const Navbar = () => {
         </div >
     );
 };
+
 export default Navbar;
