@@ -56,13 +56,7 @@ const Home = ({ theme, bodytheme }) => {
                     {/* {matches => matches ? <SearchbarMobile handleSearch={handleSearch} /> : <SearchBar handleSearch={handleSearch} />}
                     </Media> */}
 
-                    {/* Admin button */}
-                    <Link to="/admin" >
-                        {/* Button component */}
-                        <button className='button-one admin-btn'>
-                            Brice
-                        </button>
-                    </Link>
+
                     {/* Announce cards */}
                     <AnnounceCards datas={getAnnounces} handleMore={handleMore} admin="false" theme={theme} />
                 </div>

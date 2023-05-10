@@ -14,7 +14,8 @@ const Navbar = () => {
 
 
     return (
-        <>
+
+        <div>
 
             <section className={`topbar`} >
                 <img src={imgHero} alt="HYSMP? hero" className='topbar-img' />
@@ -24,8 +25,9 @@ const Navbar = () => {
                 </Link>
 
                 <div className='center'>
-                    <img src={admin} alt="admin logo" className='admin-logo' />
-
+                    <Link to="/admin" >
+                        <img src={admin} alt="admin logo" className='admin-logo' />
+                    </Link>
                     <div className='toggle-button'>
                         <img src={sun} alt="sun" className='sun' />
                         <label className="switch">
@@ -35,10 +37,20 @@ const Navbar = () => {
                         <img src={moon} alt="moon" className='moon' />
 
                     </div>
-                </div>
+
+                </div >
+
 
             </section >
-        </>
+            <div className='buttons'>
+                <Link to="/" >
+                    <button className='button-one'>J'ai trouvé un animal</button>
+                </Link>
+                <Link to="newuser" >
+                    <button className='button-two'>J'ai perdu un animal</button>
+                </Link>
+            </div>
+        </div>
     );
 };
 export default Navbar;
