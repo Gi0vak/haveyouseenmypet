@@ -1,7 +1,5 @@
-.NewSingle {
-    width: 100vw;
-    display: grid;
-    place-items: center;
+.New-single {
+    margin-top: 5rem;
 }
 
 .new-single-body {
@@ -13,7 +11,7 @@
 }
 
 .new-single-form {
-    margin-top: 23rem;
+    margin-top: 7rem;
     display: flex;
     flex-direction: column;
     width: 70%;

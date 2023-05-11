@@ -8,7 +8,6 @@ import Media from 'react-media';
 import { GetAnnounces } from '../../API/api';
 import { Link } from 'react-router-dom';
 const Home = ({ theme, bodytheme }) => {
-
     const [getAnnounces, setGetAnnounces] = useState([]);
     const [n, setN] = useState(12);
 
@@ -20,6 +19,7 @@ const Home = ({ theme, bodytheme }) => {
         const awaitAnnounces = async () => {
             try {
                 const data = await GetAnnounces();
+                console.log('first data : ', data);
                 const dataOrder = await data.sort((a, b) => new Date(b.date_perte) - new Date(a.date_perte));
                 setGetAnnounces(dataOrder.slice(0, n));
 
@@ -46,25 +46,17 @@ const Home = ({ theme, bodytheme }) => {
         <>
             {getAnnounces && (<>
                 {/* Home component */}
+                <Topbar />
                 <div className={`Home ${bodytheme}`}>
                     {/* Topbar component */}
-                    <div className="relative">
-                        <Topbar />
-                    </div>
 
                     {/* Media query for search bar */}
-                    {/* <Media query="(max-width: 780px)">
+                    <Media query="(max-width: 780px)">
                         {/* Render mobile search bar if screen is smaller than 780px */}
-                    {/* {matches => matches ? <SearchbarMobile handleSearch={handleSearch} /> : <SearchBar handleSearch={handleSearch} />}
-                    </Media> */}
+                        {matches => matches ? <SearchbarMobile handleSearch={handleSearch} /> : <SearchBar handleSearch={handleSearch} />}
+                    </Media>
 
-                    {/* Admin button */}
-                    <Link to="/admin" >
-                        {/* Button component */}
-                        <button className='button-one admin-btn'>
-                            Brice
-                        </button>
-                    </Link>
+
                     {/* Announce cards */}
                     <AnnounceCards datas={getAnnounces} handleMore={handleMore} admin="false" theme={theme} />
                 </div>

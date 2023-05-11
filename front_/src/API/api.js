@@ -84,17 +84,17 @@ export const CreateAnimal = async (animalDatas) => {
         console.log('Error : ', error);
     }
 };
-export const CreateAnnounce = async (date) => {
+export const CreateAnnounce = async (datasAnnounce) => {
     try {
-        const response = await fetch(`http://localhost:8000/api/users`, {
+        const response = await fetch(`http://localhost:8000/api/announces`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify(date),
+            body: JSON.stringify(datasAnnounce),
         });
         const data = await response.json();
-        console.log('createUsers :', data);
+        console.log('datasAnnounce :', datasAnnounce);
         return data;
     } catch (error) {
         console.log('Error : ', error);
@@ -111,6 +111,22 @@ export const CreateUser = async (usersDatas) => {
         });
         const data = await response.json();
         console.log('createUsers :', data);
+        return data;
+    } catch (error) {
+        console.log('Error : ', error);
+    }
+};
+export const CreateAdress = async (adressDatas) => {
+    try {
+        const response = await fetch(`http://localhost:8000/api/adresses`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(adressDatas),
+        });
+        const data = await response.json();
+        console.log('createAdress :', data);
         return data;
     } catch (error) {
         console.log('Error : ', error);

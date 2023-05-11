@@ -3,8 +3,7 @@ const connection = require("../database");
 
 const getAnnounces = (req, res) => {
     const sql =
-        "SELECT animal.id, animal.name, animal.sexe, animal.race, animal.couleur, animal.imageURL, adresse_perte.code_postal, annonce.date_perte FROM annonce INNER JOIN animal ON annonce.animalId = animal.id INNER JOIN adresse_perte ON annonce.adresse_perteId = adresse_perte.id;";
-
+        "SELECT annonce.id, animal.name, animal.sexe, animal.race, animal.couleur, animal.imageURL, adresse_perte.code_postal, annonce.date_perte FROM annonce INNER JOIN animal ON annonce.animalId = animal.id INNER JOIN adresse_perte ON annonce.adresse_perteId = adresse_perte.id;";
     connection.query(sql, (err, result) => {
         if (err) {
             console.error("Erreur lors de l'exécution de la requête : ", err);
@@ -15,7 +14,7 @@ const getAnnounces = (req, res) => {
 };
 const getAnnounce = (req, res) => {
     const { id } = req.params;
-    const sql = `SELECT animal.id, animal.name, animal.sexe, animal.race, animal.couleur, animal.imageURL, animal.puce, animal.age, animal.description, adresse_perte.code_postal, annonce.date_perte, utilisateur.prenom, utilisateur.nom, adresse_perte.ville, adresse_perte.adresse_premiere_ligne
+    const sql = `SELECT annonce.id, animal.name, animal.sexe, animal.race, animal.couleur, animal.imageURL, animal.puce, animal.age, animal.description, adresse_perte.code_postal, annonce.date_perte, utilisateur.prenom, utilisateur.nom, adresse_perte.ville, adresse_perte.adresse_premiere_ligne
     FROM annonce 
     INNER JOIN animal ON annonce.animalId = animal.id 
     INNER JOIN adresse_perte ON annonce.adresse_perteId = adresse_perte.id 
@@ -47,9 +46,9 @@ const createUser = (req, res) => {
 };
 
 const createAdress = (req, res) => {
-    const { nom, prenom, telephone, mail, password } = req.body;
-    const sql = `INSERT INTO utilisateur (nom, prenom, telephone, mail, password) VALUES (?, ?, ?, ?, ?)`;
-    const values = [nom, prenom, telephone, mail, password];
+    const { adresse_premiere_ligne, adresse_seconde_ligne, ville, code_postal } = req.body;
+    const sql = `INSERT INTO adresse_perte (adresse_premiere_ligne, adresse_seconde_ligne, ville, code_postal) VALUES (?, ?, ?, ?)`;
+    const values = [adresse_premiere_ligne, adresse_seconde_ligne, ville, code_postal];
 
     connection.query(sql, values, (err, result) => {
         if (err) {
@@ -61,9 +60,32 @@ const createAdress = (req, res) => {
     });
 };
 const createAnimal = (req, res) => {
-    const { nom, prenom, telephone, mail, password } = req.body;
-    const sql = `INSERT INTO utilisateur (nom, prenom, telephone, mail, password) VALUES (?, ?, ?, ?, ?)`;
-    const values = [nom, prenom, telephone, mail, password];
+    const { name, race, age, puce, sexe, couleur, poids, adresseId, utilisateurId, description, imageURL } = req.body;
+    const sql = `INSERT INTO animal (name, race, age, puce, sexe, couleur, poids, adresseId, utilisateurId, description, imageURL) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`;
+    const values = [name, race, age, puce, sexe, couleur, poids, adresseId, utilisateurId, description, imageURL];
+
+    connection.query(sql, values, (err, result) => {
+        if (err) {
+            console.error("Erreur lors de l'exécution de la requête : ", err);
+            res.status(500).send("Erreur lors de la création de l'utilisateur");
+        } else {
+            res.send(result);
+        }
+    });
+};
+const createAnnounce = (req, res) => {
+    const {
+        utilisateurId,
+        animalId,
+        date_perte,
+        adresseId } = req.body;
+    const sql = `INSERT INTO annonce ( utilisateurId, animalId, date_perte, adresse_perteId ) VALUES (?, ?, ?, ?)`;
+    const values = [
+        utilisateurId,
+        animalId,
+        date_perte,
+        adresseId
+    ];
 
     connection.query(sql, values, (err, result) => {
         if (err) {
@@ -82,7 +104,8 @@ module.exports = {
     getAnnounce,
     createUser,
     createAdress,
-    createAnimal
+    createAnimal,
+    createAnnounce
 };
 
 

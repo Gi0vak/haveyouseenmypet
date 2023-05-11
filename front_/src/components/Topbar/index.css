@@ -5,19 +5,18 @@
 .admin-logo {
     margin-left: 4.5em;
     margin-top: 2em;
+    position: relative;
 }
-
-
-
 
 .topbar {
     position: relative;
     display: flex;
     justify-content: space-around;
-    padding: 0 5.8rem 50rem 5.8rem;
+    padding: 0 5.8rem 30rem 5.8rem;
     justify-content: space-between;
     width: auto;
-    height: auto;
+    min-height: 400px;
+    overflow: hidden;
 }
 
 .topbar-img {
@@ -28,10 +27,82 @@
     left: 0;
 }
 
-@media screen and (max-width: 768px) {
+.buttons {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    position: absolute;
+    top: 31rem;
+    width: 100%;
+}
+
+@media screen and (max-width: 1000px) {
     .topbar-img {
-        min-width: 800px;
-        max-height: 175px;
+        /* min-width: auto; */
+        max-height: auto;
+    }
+
+    .admin-logo {
+        height: 3rem;
+        margin-top: 1em;
+        margin-left: 3em;
+    }
+
+    .topbar-logo {
+        height: 10rem;
+    }
+
+    .topbar {
+        padding: 0 3rem 10rem 3rem;
+    }
+
+    .sun {
+        width: 2rem !important;
+        margin: .5em !important;
+    }
+
+    .moon {
+        width: 1.8rem !important;
+        margin: .5em !important;
+    }
+
+    .switch {
+        width: 50px !important;
+        height: 24px !important;
+    }
+
+    .slider::before {
+        height: 14px !important;
+        width: 14px !important;
+        left: 4px;
+        bottom: 5px;
+        border-radius: 50%;
+    }
+
+    input:checked+.slider:before {
+        -webkit-transform: translateX(24px) !important;
+        -ms-transform: translateX(24px) !important;
+        transform: translateX(24px) !important;
+    }
+
+
+}
+
+@media screen and (max-width: 600px) {
+
+    .topbar {
+        padding: 0 0 35px 0;
+        justify-content: space-between;
+        align-items: center;
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    .buttons {
+        display: grid;
+        justify-content: 1fr;
+        gap: .5em;
+        align-items: center;
     }
 }
 
@@ -106,12 +177,6 @@ input:checked+.slider:before {
     transform: translateX(34px);
 }
 
-
-@media screen and (max-width: 600px) {
-
-    .topbar {
-        padding: 0 0 35px 0;
-        justify-content: space-around;
-        align-items: center;
-    }
+button {
+    position: relative;
 }
