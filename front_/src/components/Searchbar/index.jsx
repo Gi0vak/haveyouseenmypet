@@ -85,7 +85,7 @@ const SearchBar = ({ handleSearch }) => {
     useEffect(() => {
         const handleResize = () => {
             if (window.innerWidth < 1068) {
-                setPlaceholder1("anima");
+                setPlaceholder1("animal");
                 setPlaceholder2("location");
             } else {
                 setPlaceholder1("Filter by animal, color, age...");

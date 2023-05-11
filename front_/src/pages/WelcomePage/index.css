@@ -1,0 +1,15 @@
+.Single {
+    display: grid;
+    place-items: center;
+    margin-top: 5rem;
+
+}
+
+.single-body {
+    position: relative;
+    min-height: 600px;
+    max-width: 750px;
+    margin: 0 5vw;
+    padding-bottom: 8rem;
+    z-index: 2;
+}

@@ -1,5 +1,6 @@
 import './App.css';
 import { Routes, Route } from 'react-router-dom';
+import WelcomePage from './pages/WelcomePage';
 import Home from './pages/Home';
 import Single from './pages/Single';
 import NewUser from './pages/NewUser';
@@ -36,6 +37,9 @@ function App() {
 
                     <Routes>
                         <Route
+                            path="/welcome"
+                            element={<WelcomePage theme={theme} bodytheme={bodyTheme} />} />
+                        <Route
                             path="/"
                             element={<Home theme={theme} bodytheme={bodyTheme} />} />
                         <Route
@@ -44,7 +48,6 @@ function App() {
                         <Route
                             path="/announces/:announceID"
                             element={<Single theme={theme} bodytheme={bodyTheme} />} />
-
                         <Route
                             path="/newuser"
                             element={<NewUser theme={theme} bodytheme={bodyTheme} />} />
@@ -54,7 +57,6 @@ function App() {
                         <Route
                             path="/newadress"
                             element={<NewAdress theme={theme} bodytheme={bodyTheme} />} />
-
                         <Route
                             path="/updateannounce/:announceID"
                             element={<UpdateSingle theme={theme} bodytheme={bodyTheme} />} />
