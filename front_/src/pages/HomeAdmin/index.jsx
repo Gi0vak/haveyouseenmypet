@@ -54,8 +54,8 @@ const Home = ({ theme, bodytheme }) => {
     }
     return (
         <>
+            <Topbar />
             <div className={`Home ${bodytheme}`}>
-                <Topbar />
                 <div className='admin-back-home'>
                     <Link to="/">Home</Link>
                 </div>
