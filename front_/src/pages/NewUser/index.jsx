@@ -78,7 +78,6 @@ const NewUser = ({ theme, bodytheme }) => {
                             type="text"
                             id="user-phone"
                             value={userPhone}
-                            placeholder='logo foot par défaut'
                             onChange={(event) => setUserPhone(event.target.value)}
                         />
 

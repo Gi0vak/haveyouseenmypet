@@ -1,8 +1,6 @@
 // définition des routes API
 const router = require("express").Router();
-
-const { getAnnounces, getAnnounce, createUser, createAdress, createAnimal, createAnnounce } = require("./controllers/Pet");
-
+const { getAnnounces, getAnnounce, createUser, createAdress, createAnimal, createAnnounce, deleteAnnounce } = require("./controllers/Pet");
 
 router.get("/", (req, res) => {
     res.send("Let's build a CRUD API!");
@@ -14,6 +12,7 @@ router.post("/api/users", createUser);
 router.post("/api/announces", createAnnounce);
 router.post("/api/adresses", createAdress);
 router.post("/api/animals", createAnimal);
+router.delete("/api/announces/:id", deleteAnnounce);
 
 
 module.exports = router;

@@ -85,10 +85,10 @@ const SearchBar = ({ handleSearch }) => {
     useEffect(() => {
         const handleResize = () => {
             if (window.innerWidth < 1068) {
-                setPlaceholder1("Filter");
+                setPlaceholder1("animal");
                 setPlaceholder2("location");
             } else {
-                setPlaceholder1("Filter by title, companies, expertise...");
+                setPlaceholder1("Filter by animal, color, age...");
                 setPlaceholder2("Filter by location...");
             }
         }
@@ -132,22 +132,11 @@ const SearchBar = ({ handleSearch }) => {
                     value={searchValueTwo}
                 />
             </div>
-            <div className="grid-full-time">
-                <input
-                    type="checkbox"
-                    className="checkbox"
-                    onChange={(e) => handleCheckboxChange(e)}
-                />
-                <label>
-                    <Media query="(max-width: 1210px)">
-                        {match => match ? "Full Time" : "Full Time Only"}
-                    </Media>
-                </label>
-
+            <div className="grid-filter-button">
+                <button className="button-one" type="submit" >
+                    Search
+                </button>
             </div>
-            <button className="button-one" type="submit" >
-                Search
-            </button>
         </form >
     );
 };
