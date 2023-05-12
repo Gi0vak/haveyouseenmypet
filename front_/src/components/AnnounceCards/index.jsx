@@ -7,6 +7,7 @@ const AnnouceCards = ({
     datas,
     handleMore,
     handleUpdate,
+    handleDelete,
     admin,
     theme }) => {
 
@@ -26,6 +27,7 @@ const AnnouceCards = ({
                             id={el.id}
                             admin={admin}
                             handleUpdate={handleUpdate}
+                            handleDelete={handleDelete}
                             theme={theme}
                         />)
                 })}

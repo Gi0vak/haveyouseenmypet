@@ -37,18 +37,12 @@ export const GetAnnounce = async (id) => {
 };
 
 export const DeleteAnnounce = async (id) => {
-
-
     if (id) {
         try {
             const response = await fetch(
-                `http://localhost:8000/api/announce/${id}`
+                `http://localhost:8000/api/announces/${id}`
                 , {
                     method: 'DELETE',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify()
                 });
             const data = await response.json();
             return data;

@@ -9,8 +9,8 @@ const AnnounceCard = ({
     logo,
     name,
     postedAt,
-    contract,
     company,
+    handleDelete,
     location,
     admin,
     theme,
@@ -22,16 +22,7 @@ const AnnounceCard = ({
         return <>{timeAgo}</>;
     }
 
-    const handleDelete = async (e, id) => {
-        e.preventDefault();
-        try {
-            const announce = await DeleteAnnounce(id)
-            window.location.reload();
-            console.log('the announce this id is deleted', announce);
-        } catch (error) {
-            console.log(error);
-        }
-    }
+
 
     return (
         <section className="card-grid">
@@ -59,10 +50,7 @@ const AnnounceCard = ({
                     <Link to={`/updateannounce/${id}`} >
                         <img src='https://i.postimg.cc/Qx37sJMg/update.png' alt="update announce" className='update' />
                     </Link>
-                    <img src="https://i.postimg.cc/25wvXbYd/delete.png" alt="trash announce" className='delete' onClick={(e) => {
-
-                        handleDelete(e, id)
-                    }} />
+                    <img src="https://i.postimg.cc/25wvXbYd/delete.png" alt="trash announce" className='delete' onClick={((e) => { handleDelete(e, id) })} />
 
                 </div>}
         </section>

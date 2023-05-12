@@ -30,7 +30,8 @@ const getAnnounce = (req, res) => {
 };
 const deleteAnnounce = (req, res) => {
     const { id } = req.params;
-    const sql = ``;
+    const sql = `DELETE ap, an FROM annonce a LEFT JOIN adresse_perte ap ON a.adresse_perteId = ap.id LEFT JOIN animal an ON a.animalId = an.id WHERE a.id = ? AND (ap.id IS NOT NULL OR an.id IS NOT NULL);
+    `;
     connection.query(sql, [id], (err, result) => {
         if (err) {
             console.error("Erreur lors de l'exécution de la requête : ", err);
@@ -107,8 +108,6 @@ const createAnnounce = (req, res) => {
         }
     });
 };
-
-
 
 module.exports = {
     getAnnounces,

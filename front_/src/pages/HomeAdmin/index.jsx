@@ -6,6 +6,7 @@ import SearchbarMobile from '../../components/SearchbarMobile';
 import { useEffect, useState } from 'react';
 import Media from 'react-media';
 import { GetAnnounces } from '../../API/api';
+import { DeleteAnnounce } from '../../API/api';
 import { Link } from 'react-router-dom';
 import { UpdateAnnounce } from '../../API/api';
 import { useNavigate } from 'react-router-dom';
@@ -21,7 +22,7 @@ const Home = ({ theme, bodytheme }) => {
                 const data = await GetAnnounces();
                 const dataOrder = await data.sort((a, b) => new Date(b.date_perte) - new Date(a.date_perte));
                 setGetAnnounces(dataOrder.slice(0, n));
-                console.log('first data : ', getAnnounces);
+
             }
             catch (error) {
                 console.log('Error : ', error);
@@ -44,6 +45,25 @@ const Home = ({ theme, bodytheme }) => {
             console.log(error);
         }
     }
+    const handleDelete = async (e, id) => {
+        e.preventDefault();
+        const confirm = window.confirm('Voulez-vous vraiment supprimer cette annonce?');
+        if (confirm) {
+
+            console.log("L'élément a été supprimé");
+
+            try {
+                const announce = await DeleteAnnounce(id)
+                console.log('the announce this id is deleted', announce);
+
+                window.location.reload();
+            } catch (error) {
+                console.log(error);
+            }
+        } else {
+            alert('vous avez annulé la suppression de l\'annonce');
+        }
+    }
     const handleNewAnnounce = async () => {
 
         navigate("/newuser");
@@ -52,6 +72,7 @@ const Home = ({ theme, bodytheme }) => {
         setGetAnnounces(dataSearch)
 
     }
+    console.log('first data admin : ', getAnnounces);
     return (
         <>
             <Topbar />
@@ -73,6 +94,7 @@ const Home = ({ theme, bodytheme }) => {
                     handleMore={handleMore}
                     handleSearch={handleSearch}
                     handleUpdate={handleUpdate}
+                    handleDelete={handleDelete}
                     admin="true"
                     theme={theme} />
             </div>
