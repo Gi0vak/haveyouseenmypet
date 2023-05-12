@@ -28,6 +28,17 @@ const getAnnounce = (req, res) => {
         }
     });
 };
+const deleteAnnounce = (req, res) => {
+    const { id } = req.params;
+    const sql = ``;
+    connection.query(sql, [id], (err, result) => {
+        if (err) {
+            console.error("Erreur lors de l'exécution de la requête : ", err);
+        } else {
+            res.send(result);
+        }
+    });
+};
 
 const createUser = (req, res) => {
     const { nom, prenom, telephone, mail, password } = req.body;
@@ -105,5 +116,6 @@ module.exports = {
     createUser,
     createAdress,
     createAnimal,
-    createAnnounce
+    createAnnounce,
+    deleteAnnounce
 };

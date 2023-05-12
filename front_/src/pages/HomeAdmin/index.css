@@ -9,10 +9,6 @@
 }
 
 .admin-back-home {
-    position: absolute;
-    top: 23rem;
-    left: 30rem;
-    z-index: 3;
     cursor: pointer;
     text-decoration: none;
     color: black;
@@ -22,5 +18,7 @@
     border-radius: 6px;
     font-size: 2rem;
     font-weight: 700;
+    text-align: center;
+    margin-top: 2rem;
 
 }
