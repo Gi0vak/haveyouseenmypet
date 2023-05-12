@@ -2,6 +2,7 @@ import './index.css';
 import AnnounceCards from '../../components/AnnounceCards';
 import Topbar from '../../components/Topbar';
 import SearchBar from '../../components/Searchbar';
+import Footer from '../../components/Footer';
 import SearchbarMobile from '../../components/SearchbarMobile';
 import { useEffect, useState } from 'react';
 import Media from 'react-media';
@@ -61,6 +62,7 @@ const Home = ({ theme, bodytheme }) => {
                     <AnnounceCards datas={getAnnounces} handleMore={handleMore} admin="false" theme={theme} />
                 </div>
             </>)}
+            <Footer />
         </>
 
 
