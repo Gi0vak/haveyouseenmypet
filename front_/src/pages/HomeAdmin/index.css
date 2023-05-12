@@ -2,10 +2,10 @@
     position: relative
 }
 
-.add-announce-btn {
-    position: absolute;
-    top: 23rem;
-    left: calc(50vw - 60px);
+.add-announce {
+    display: grid;
+    place-items: center;
+    padding-top: 2rem;
 }
 
 .admin-back-home {

@@ -3,7 +3,7 @@ const connection = require("../database");
 
 const getAnnounces = (req, res) => {
     const sql =
-        "SELECT annonce.id, animal.name, animal.sexe, animal.race, animal.couleur, animal.imageURL, adresse_perte.code_postal, annonce.date_perte FROM annonce INNER JOIN animal ON annonce.animalId = animal.id INNER JOIN adresse_perte ON annonce.adresse_perteId = adresse_perte.id;";
+        "SELECT annonce.id, animal.name, animal.sexe, animal.race, animal.couleur, animal.imageURL, adresse_perte.code_postal,adresse_perte.ville, annonce.date_perte FROM annonce INNER JOIN animal ON annonce.animalId = animal.id INNER JOIN adresse_perte ON annonce.adresse_perteId = adresse_perte.id;";
     connection.query(sql, (err, result) => {
         if (err) {
             console.error("Erreur lors de l'exécution de la requête : ", err);
@@ -40,7 +40,6 @@ const deleteAnnounce = (req, res) => {
         }
     });
 };
-
 const createUser = (req, res) => {
     const { nom, prenom, telephone, mail, password } = req.body;
     const sql = `INSERT INTO utilisateur (nom, prenom, telephone, mail, password) VALUES (?, ?, ?, ?, ?)`;
@@ -56,7 +55,6 @@ const createUser = (req, res) => {
 
     });
 };
-
 const createAdress = (req, res) => {
     const { adresse_premiere_ligne, adresse_seconde_ligne, ville, code_postal } = req.body;
     const sql = `INSERT INTO adresse_perte (adresse_premiere_ligne, adresse_seconde_ligne, ville, code_postal) VALUES (?, ?, ?, ?)`;

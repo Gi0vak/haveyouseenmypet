@@ -1,5 +1,6 @@
 import loupe from "../../assets/pictures/loupe.svg";
 import location from "../../assets/pictures/location.svg";
+import arrow from "../../assets/pictures/arrow.svg"
 import { GetSearch } from "../../API/api";
 import { useState, useEffect } from 'react';
 import Media from 'react-media';
@@ -96,48 +97,58 @@ const SearchBar = ({ handleSearch }) => {
         handleResize(); // appel initial pour définir le placeholder en fonction de la taille de l'écran
         return () => window.removeEventListener('resize', handleResize);
     }, []);
-
+    const handleClickToTop = () => {
+        window.scroll({ top: 0, left: 0, behavior: "smooth" });
+        return () => window.removeEventListener('scroll', handleClickToTop);
+    };
 
 
     // Affichage de la barre de recherche
     return (
-        <form
-            className={`form ${isSticky ? 'sticky' : ''} ${theme}`}
-            onSubmit={handleSubmit}>
+        <section className={`  form-arrow  ${isSticky ? 'sticky' : ''}`}>
+            <form
+                className={`form ${theme}`}
+                onSubmit={handleSubmit}>
 
-            <div className="grid-filter">
-                <img
-                    src={loupe}
-                    className="loupe"
-                    alt="loupe" />
-                <input
-                    className="input-filter"
-                    onChange={handleInputOneChange}
-                    placeholder={placeholder1}
-                    name="search"
-                    id="search"
-                    type="text"
-                    value={searchValueOne}
-                />
+                <div className="grid-filter">
+                    <img
+                        src={loupe}
+                        className="loupe"
+                        alt="loupe" />
+                    <input
+                        className="input-filter"
+                        onChange={handleInputOneChange}
+                        placeholder={placeholder1}
+                        name="search"
+                        id="search"
+                        type="text"
+                        value={searchValueOne}
+                    />
+                </div>
+                <div className="grid-location">
+                    <img src={location} className="location" alt="location" />
+                    <input
+                        className="input-location"
+                        onChange={handleInputTwoChange}
+                        placeholder={placeholder2}
+                        name="location"
+                        id="location"
+                        type="text"
+                        value={searchValueTwo}
+                    />
+                </div>
+                <div className="grid-filter-button">
+                    <button className="button-one" type="submit" >
+                        Search
+                    </button>
+                </div>
+            </form >
+            <div className="box-arrow">
+                <img src={arrow} alt="arrow" className={`arrow ${isSticky ? 'sticky' : ''}`} width="30" onClick={handleClickToTop} />
             </div>
-            <div className="grid-location">
-                <img src={location} className="location" alt="location" />
-                <input
-                    className="input-location"
-                    onChange={handleInputTwoChange}
-                    placeholder={placeholder2}
-                    name="location"
-                    id="location"
-                    type="text"
-                    value={searchValueTwo}
-                />
-            </div>
-            <div className="grid-filter-button">
-                <button className="button-one" type="submit" >
-                    Search
-                </button>
-            </div>
-        </form >
+
+        </section >
+
     );
 };
 

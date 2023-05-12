@@ -79,12 +79,14 @@ const Home = ({ theme, bodytheme }) => {
             <div className='admin-back-home'>
                 <Link to="/">Home</Link>
             </div>
-
-            <div className={`Home ${bodytheme}`}>
-
+            <div className="add-announce">
                 <button className='button-one add-announce-btn' onClick={handleNewAnnounce}>
                     Add an announce
                 </button>
+            </div>
+            <div className={`Home ${bodytheme}`}>
+
+
 
                 <Media query="(max-width: 780px)">
                     {matches => matches ? <SearchbarMobile /> : <SearchBar />}

@@ -1,6 +1,16 @@
-.form {
+.form-arrow {
     position: sticky;
     top: 121px;
+    z-index: 12;
+}
+
+.form-arrow.sticky {
+    top: 21px;
+    opacity: 0.8;
+}
+
+.form {
+
     display: grid;
     grid-template-columns: 3fr 3fr 2fr;
     align-items: center;
@@ -9,21 +19,29 @@
     height: 80px;
     font-size: var(--h4);
     padding: 0px 16px;
-    margin-right: 10vw;
     margin-left: 10vw;
     transition: top 0.5s ease;
     caret-color: rgba(89, 100, 224, 1);
     border-radius: 6px;
-    z-index: 12;
-}
 
-.form.sticky {
-    top: 21px;
-    opacity: 0.8;
 }
 
 .form>input:focus-visible {
     border: none;
+}
+
+.arrow {
+    width: 2rem;
+    opacity: 0;
+}
+
+.arrow.sticky {
+    opacity: 0.8;
+}
+
+.arrow:hover.sticky {
+    opacity: 1;
+    cursor: pointer;
 }
 
 .grid-filter {
@@ -76,6 +94,19 @@
     width: 24px;
     height: auto;
 }
+
+.form-arrow {
+    display: flex;
+    justify-content: space-between;
+}
+
+.box-arrow {
+    display: grid;
+    place-items: center;
+    width: 10vw;
+}
+
+
 
 @media screen and (max-width:1100px) {
     .form {

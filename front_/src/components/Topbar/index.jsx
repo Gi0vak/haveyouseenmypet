@@ -15,8 +15,7 @@ const Navbar = () => {
 
     return (
 
-        <div>
-
+        <>
             <section className={`topbar`} >
                 <img src={imgHero} alt="HYSMP? hero" className='topbar-img' />
 
@@ -52,8 +51,7 @@ const Navbar = () => {
                     <button className='button-two'>J'ai perdu un animal</button>
                 </Link>
             </div>
-
-        </div >
+        </>
     );
 };
 

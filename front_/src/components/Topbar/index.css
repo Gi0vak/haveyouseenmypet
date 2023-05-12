@@ -52,10 +52,6 @@
         height: 10rem;
     }
 
-    .topbar {
-        padding: 0 3rem 10rem 3rem;
-    }
-
     .sun {
         width: 2rem !important;
         margin: .5em !important;
@@ -88,7 +84,7 @@
 
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 767px) {
 
     .topbar {
         padding: 0 0 35px 0;
@@ -97,12 +93,6 @@
         padding-right: 1rem;
     }
 
-    .buttons {
-        display: grid;
-        justify-content: 1fr;
-        gap: .5em;
-        align-items: center;
-    }
 }
 
 .toggle-button {
@@ -174,8 +164,4 @@ input:checked+.slider:before {
     -webkit-transform: translateX(34px);
     -ms-transform: translateX(34px);
     transform: translateX(34px);
-}
-
-button {
-    position: relative;
 }

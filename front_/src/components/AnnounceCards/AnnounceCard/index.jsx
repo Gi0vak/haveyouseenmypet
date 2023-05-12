@@ -8,10 +8,13 @@ import { DeleteAnnounce } from '../../../API/api.js';
 const AnnounceCard = ({
     logo,
     name,
+    sexe,
+    race,
+    color,
     postedAt,
-    company,
     handleDelete,
-    location,
+    postalCode,
+    town,
     admin,
     theme,
     id }) => {
@@ -26,25 +29,39 @@ const AnnounceCard = ({
 
     return (
         <section className="card-grid">
-            <article className={`card ${theme}`}>
-                {logo &&
-                    (<img
-                        src={logo}
-                        className="card-announce-logo"
-                        alt="logo announce" />
-                    )}
+            <Link className="card-link" admin={admin} to={`/announces/${id}`}>
+                <article className={`card ${theme}`}>
+                    <div className="card-announce-logo">
+                        {logo &&
+                            (<img
+                                src={logo}
+                                alt="logo announce" />
+                            )}
+                    </div>
+                    <div className="location-date">
+                        <h3 className='card-announce-location'>
+                            {town} {postalCode && (`(${postalCode})`)}
+                        </h3>
+                        <h3 className="card-announce-date">
+                            {TimeAgo(postedAt)}
+                        </h3 >
 
-                <h3 className="card-announce-contract-postedAT">
-                    {TimeAgo(postedAt)}
+                    </div>
+                    <div className="card-announce-desc">
+                        <h1 >{name}</h1>
+                        <h2 >sexe</h2>
+                        <h3 >{sexe}</h3>
+                        <h2 >race</h2>
+                        <h3 >{race}</h3>
+                        <h2>color</h2>
+                        <h3>{color}</h3>
+                    </div>
 
-                </h3 >
-                <Link className="card-link" admin={admin} to={`/announces/${id}`}>
-                    <h1 className="card-announce-position">{name}</h1>
-                </Link>
-                <h3 className='card-announce-company'>{company}</h3>
-                <h3 className='card-announce-location'>{location}</h3>
 
-            </article >
+
+
+                </article >
+            </Link>
             {admin === "true" &&
                 <div className='delete-update'>
                     <Link to={`/updateannounce/${id}`} >
