@@ -14,7 +14,7 @@ const getAnnounces = (req, res) => {
 };
 const getAnnounce = (req, res) => {
     const { id } = req.params;
-    const sql = `SELECT annonce.id, animal.name, animal.sexe, animal.race, animal.couleur, animal.imageURL, animal.puce, animal.age, animal.description, adresse_perte.code_postal, annonce.date_perte, utilisateur.prenom, utilisateur.nom, adresse_perte.ville, adresse_perte.adresse_premiere_ligne
+    const sql = `SELECT annonce.id, animal.name, animal.sexe, animal.race, animal.couleur, animal.imageURL, animal.puce, animal.age, animal.poids, animal.description, adresse_perte.code_postal, annonce.date_perte, utilisateur.prenom, utilisateur.nom, utilisateur.telephone, utilisateur.mail, adresse_perte.ville, adresse_perte.adresse_premiere_ligne
     FROM annonce 
     INNER JOIN animal ON annonce.animalId = animal.id 
     INNER JOIN adresse_perte ON annonce.adresse_perteId = adresse_perte.id 
@@ -108,6 +108,57 @@ const createAnnounce = (req, res) => {
         }
     });
 };
+const updateAnnounce = (req, res) => {
+    const { telephone,
+        mail,
+        name,
+        race,
+        age,
+        puce,
+        sexe,
+        couleur,
+        poids,
+        description,
+        imageURL,
+        adresse_premiere_ligne,
+        adresse_seconde_ligne,
+        ville,
+        code_postal
+    } = req.body;
+    const sql = `
+    UPDATE annonce 
+    JOIN animal ON annonce.animalId = animal.id 
+    JOIN adresse_perte ON annonce.adresse_perteId = adresse_perte.id 
+    JOIN utilisateur ON annonce.utilisateurId = utilisateur.id 
+    SET utilisateur.telephone = ?, utilisateur.mail = ?, animal.name = ?, animal.race = ?, animal.age = ?, animal.puce = ?, animal.sexe = ?, animal.couleur = ?, animal.poids= ?, animal.description = ?, animal.imageURL = ?, adresse_perte.adresse_premiere_ligne = ?, adresse_perte.adresse_seconde_ligne = ?, adresse_perte.ville = ?, adresse_perte.code_postal = ? WHERE annonce.id = ?`;
+    const values = [
+        telephone,
+        mail,
+        name,
+        race,
+        age,
+        puce,
+        sexe,
+        couleur,
+        poids,
+        description,
+        imageURL,
+        adresse_premiere_ligne,
+        adresse_seconde_ligne,
+        ville,
+        code_postal,
+        req.params.id
+    ];
+
+    connection.query(sql, values, (err, result) => {
+        if (err) {
+            console.error("Erreur lors de l'exécution de la requête : ", err);
+            res.status(500).send("Erreur lors de la création de l'utilisateur");
+        } else {
+            res.send(result);
+        }
+    });
+};
 
 module.exports = {
     getAnnounces,
@@ -116,6 +167,7 @@ module.exports = {
     createAdress,
     createAnimal,
     createAnnounce,
+    updateAnnounce,
     deleteAnnounce
 };
 

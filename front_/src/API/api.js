@@ -136,6 +136,8 @@ export const UpdateAnnounce = async (newannounce, id) => {
             },
             body: JSON.stringify(newannounce),
         });
+        const data = await response.json();
+        console.log('upDate announce :', data);
 
     } catch (error) {
         console.log('Error : ', error);
