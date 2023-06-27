@@ -1,6 +1,7 @@
 import './index.css';
 import AnnounceCards from '../../components/AnnounceCards';
 import Topbar from '../../components/Topbar';
+import Footer from '../../components/Footer';
 import SearchBar from '../../components/Searchbar';
 import SearchbarMobile from '../../components/SearchbarMobile';
 import { useEffect, useState } from 'react';
@@ -71,7 +72,7 @@ const Home = ({ theme, bodytheme }) => {
                     admin="true"
                     theme={theme} />
             </div>
-
+            <Footer />
         </>
 
     );

@@ -2,13 +2,46 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     place-items: center;
-    width: 100vw;
-    height: 96px;
+    width: auto;
+    height: 230px;
     background-color: white;
-    z-index: 2;
+    position: relative;
+    /*z-index: 2;*/
+    background-color: #6F8760;
 }
 
-@media screen and (max-width: 768px) {
+.logoFooter {
+
+    /* padding-right: 30rem;
+    padding-bottom: 25rem;*/
+}
+
+.social-icons {
+
+    display: flex;
+    /* Les icônes seront affichées en ligne */
+    justify-content: space-between;
+    /* Aligne les icônes à droite */
+    gap: 30px;
+    /* Espacement entre les icônes */
+}
+
+
+
+.liens {
+    position: relative;
+    color: white;
+    font-size: 12px;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+}
+
+
+/*@media screen and (max-width: 768px) {
+>>>>>>> Stashed changes
     .Footer {
         grid-template-columns: 1fr;
     }
