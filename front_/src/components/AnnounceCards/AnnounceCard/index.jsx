@@ -1,68 +1,73 @@
 import './index.css';
 import { Link } from 'react-router-dom';
 import Moment from 'moment';
+import 'moment/locale/fr';
 import { DeleteAnnounce } from '../../../API/api.js';
 
 
 const AnnounceCard = ({
     logo,
     name,
+    sexe,
+    race,
+    color,
     postedAt,
-    contract,
-    company,
-    location,
+    handleDelete,
+    postalCode,
+    town,
     admin,
     theme,
     id }) => {
 
 
     const TimeAgo = (date) => {
-        const timeAgo = Moment(date).fromNow();
+        const timeAgo = Moment(date).locale('fr').fromNow();
         return <>{timeAgo}</>;
     }
 
-    const handleDelete = async (e, id) => {
-        e.preventDefault();
-        try {
-            const announce = await DeleteAnnounce(id)
-            window.location.reload();
-            console.log('the announce this id is deleted', announce);
-        } catch (error) {
-            console.log(error);
-        }
-    }
+
 
     return (
         <section className="card-grid">
-            <article className={`card ${theme}`}>
-                {logo &&
-                    (<img
-                        src={logo}
-                        className="card-announce-logo"
-                        alt="logo announce" />
-                    )}
+            <Link className="card-link" admin={admin} to={`/announces/${id}`}>
+                <article className={`card ${theme}`}>
+                    <div className="card-announce-logo">
+                        {logo &&
+                            (<img
+                                src={logo}
+                                alt="logo announce" />
+                            )}
+                    </div>
+                    <div className="location-date">
+                        <h3 className='card-announce-location'>
+                            {town} {postalCode && (`(${postalCode})`)}
+                        </h3>
+                        <h3 className="card-announce-date">
+                            {TimeAgo(postedAt)}
+                        </h3 >
 
-                <h3 className="card-announce-contract-postedAT">
-                    {TimeAgo(postedAt)}
-                    <span className='dot'> • </span>
-                    {contract}
-                </h3 >
-                <Link className="card-link" admin={admin} to={`/announces/${id}`}>
-                    <h1 className="card-announce-position">{name}</h1>
-                </Link>
-                <h3 className='card-announce-company'>{company}</h3>
-                <h3 className='card-announce-location'>{location}</h3>
+                    </div>
+                    <div className="card-announce-desc">
+                        <h1 >{name}</h1>
+                        <h2 >sexe</h2>
+                        <h3 >{sexe}</h3>
+                        <h2 >race</h2>
+                        <h3 >{race}</h3>
+                        <h2>color</h2>
+                        <h3>{color}</h3>
+                    </div>
 
-            </article >
+
+
+
+                </article >
+            </Link>
             {admin === "true" &&
                 <div className='delete-update'>
                     <Link to={`/updateannounce/${id}`} >
                         <img src='https://i.postimg.cc/Qx37sJMg/update.png' alt="update announce" className='update' />
                     </Link>
-                    <img src="https://i.postimg.cc/25wvXbYd/delete.png" alt="trash announce" className='delete' onClick={(e) => {
-
-                        handleDelete(e, id)
-                    }} />
+                    <img src="https://i.postimg.cc/25wvXbYd/delete.png" alt="trash announce" className='delete' onClick={((e) => { handleDelete(e, id) })} />
 
                 </div>}
         </section>

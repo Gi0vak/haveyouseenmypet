@@ -1,31 +1,23 @@
 .Footer {
+    margin-top: 40px;
     display: grid;
     grid-template-columns: 1fr 1fr;
     place-items: center;
-    width: auto;
+    width: 100vw;
     height: 230px;
     background-color: white;
-    position: relative;
-    /*z-index: 2;*/
+    z-index: 2;
     background-color: #6F8760;
 }
 
-.logoFooter {
-
-    /* padding-right: 30rem;
-    padding-bottom: 25rem;*/
-}
-
 .social-icons {
-
     display: flex;
     /* Les icônes seront affichées en ligne */
-    justify-content: space-between;
+    justify-content: flex-end;
     /* Aligne les icônes à droite */
-    gap: 30px;
+    gap: 20px;
     /* Espacement entre les icônes */
 }
-
 
 
 .liens {
@@ -42,19 +34,22 @@
 
 /*@media screen and (max-width: 768px) {
 >>>>>>> Stashed changes
+=======
+/*@media screen and (max-width: 768px) {
+>>>>>>> 65cb3e7b6f652839c8e2aeccaaa58b1f3b40d6d2
     .Footer {
         grid-template-columns: 1fr;
     }
 
     .footer-left {
-        display: none;
+        width: 50%;
     }
 
     .footer-right {
-        width: 90%;
+        width: 50%;
     }
 
     .footer-btn {
         width: 100%;
     }
-}
+}*/

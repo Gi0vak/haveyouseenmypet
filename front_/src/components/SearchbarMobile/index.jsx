@@ -5,7 +5,7 @@ import filter from "../../assets/pictures/filter.svg";
 import location from "../../assets/pictures/location.svg";
 import { useState, useEffect } from 'react';
 import './index.css';
-import { ThemeContext } from '../../ThemeContext';
+import { ThemeContext } from '../../context/ThemeContext';
 import { useContext } from 'react';
 
 
@@ -72,37 +72,7 @@ const SearchbarMobile = ({ handleSearch }) => {
         }
     }
 
-    const handleFilter = (e) => {
-        e.preventDefault()
-        const handleCheckboxChange = () => {
-            setChecked(checked => !checked);
-            checked ? setSearchValueThree("Full-time") : setSearchValueThree("");
-        }
-        console.log(searchValueOne);
-        return (
-            <div className="grid-filter">
-                <div className="grid-location">
-                    <img src={location} className="location" alt="location" />
-                    <input
-                        className="input-location"
-                        placeholder={placeholder2}
-                        name="location"
-                        id="location"
-                        type="text"
-                        value={searchValueTwo}
-                        onChange={handleInputTwoChange}
-                    />
-                </div>
-                <input
-                    type="checkbox"
-                    className="checkbox"
-                    onChange={handleCheckboxChange} />
-                <button className="button-one" type="submit" >
-                    Search
-                </button>
-            </div>
-        )
-    }
+
 
     return (
 
@@ -124,8 +94,9 @@ const SearchbarMobile = ({ handleSearch }) => {
                 />
 
             </div>
-            <img src={filter} className="filter" alt="filter" onClick={(e) => handleFilter(e)} />
-            <button className="button-one " type="submit"><img src={loupeMobile} alt="search" /></button>
+            <div className="grid-button">
+                <button className="button-one " type="submit"><img src={loupeMobile} alt="search" /></button>
+            </div>
 
         </form>
 

@@ -1,16 +1,14 @@
 .cards {
     display: grid;
-    place-content: center;
-    place-items: center;
     grid-template-columns: repeat(2, 1fr);
-    column-gap: 4rem;
+    place-items: center;
+    column-gap: 6%;
     row-gap: 6rem;
+    width: 100%;
     max-width: 1400px;
-    margin-right: 10vw;
-    margin-left: 10vw;
     transition: all 0.5s ease-in-out;
     min-height: auto;
-    margin-top: 240px;
+    margin-top: 5.8rem;
 }
 
 .btn-center {
@@ -19,14 +17,9 @@
     padding: 106px;
 }
 
-@media (max-width:1077px) {
-    .cards {
-        grid-template-columns: repeat(2, 1fr);
-        min-width: 700px;
-    }
-}
 
-@media (max-width:780px) {
+
+@media (max-width:1130px) {
     .cards {
         grid-template-columns: 1fr;
         min-width: 300px;

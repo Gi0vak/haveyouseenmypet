@@ -37,18 +37,12 @@ export const GetAnnounce = async (id) => {
 };
 
 export const DeleteAnnounce = async (id) => {
-
-
     if (id) {
         try {
             const response = await fetch(
-                `http://localhost:8000/api/announce/${id}`
+                `http://localhost:8000/api/announces/${id}`
                 , {
                     method: 'DELETE',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify()
                 });
             const data = await response.json();
             return data;
@@ -84,17 +78,17 @@ export const CreateAnimal = async (animalDatas) => {
         console.log('Error : ', error);
     }
 };
-export const CreateAnnounce = async (date) => {
+export const CreateAnnounce = async (datasAnnounce) => {
     try {
-        const response = await fetch(`http://localhost:8000/api/users`, {
+        const response = await fetch(`http://localhost:8000/api/announces`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify(date),
+            body: JSON.stringify(datasAnnounce),
         });
         const data = await response.json();
-        console.log('createUsers :', data);
+        console.log('datasAnnounce :', datasAnnounce);
         return data;
     } catch (error) {
         console.log('Error : ', error);
@@ -116,6 +110,22 @@ export const CreateUser = async (usersDatas) => {
         console.log('Error : ', error);
     }
 };
+export const CreateAdress = async (adressDatas) => {
+    try {
+        const response = await fetch(`http://localhost:8000/api/adresses`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(adressDatas),
+        });
+        const data = await response.json();
+        console.log('createAdress :', data);
+        return data;
+    } catch (error) {
+        console.log('Error : ', error);
+    }
+};
 export const UpdateAnnounce = async (newannounce, id) => {
     console.log('newannounce :', newannounce, id);
     try {
@@ -126,6 +136,8 @@ export const UpdateAnnounce = async (newannounce, id) => {
             },
             body: JSON.stringify(newannounce),
         });
+        const data = await response.json();
+        console.log('upDate announce :', data);
 
     } catch (error) {
         console.log('Error : ', error);

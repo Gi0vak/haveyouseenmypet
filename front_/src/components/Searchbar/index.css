@@ -1,30 +1,47 @@
-.form {
+.form-arrow {
     position: sticky;
     top: 121px;
+    z-index: 12;
+}
+
+.form-arrow.sticky {
+    top: 21px;
+    opacity: 0.8;
+}
+
+.form {
+
     display: grid;
-    grid-template-columns: 463fr 300fr 206fr 123fr;
+    grid-template-columns: 3fr 3fr 2fr;
     align-items: center;
     align-content: center;
     width: 80vw;
     height: 80px;
-    /* background-color: #fff; */
     font-size: var(--h4);
     padding: 0px 16px;
-    margin-right: 10vw;
     margin-left: 10vw;
     transition: top 0.5s ease;
     caret-color: rgba(89, 100, 224, 1);
     border-radius: 6px;
-    z-index: 12;
-}
 
-.form.sticky {
-    top: 20px;
-    opacity: 0.8;
 }
 
 .form>input:focus-visible {
     border: none;
+}
+
+.arrow {
+    width: 2rem;
+    opacity: 0;
+}
+
+.arrow.sticky {
+    opacity: 0.8;
+}
+
+.arrow:hover.sticky {
+    opacity: 1;
+    cursor: pointer;
 }
 
 .grid-filter {
@@ -38,42 +55,22 @@
     width: 100%;
     border: 0;
     padding-left: 16px;
+    justify-content: center;
 
 }
 
 .grid-location {
     display: flex;
     border-right: 1px solid #6E8098;
+    justify-content: center;
     align-items: center;
     min-height: 80px;
     padding-left: 16px;
 }
 
-input[type="checkbox"] {
-    height: 24px;
-    width: 24px;
-    -webkit-appearance: none;
-    background: var(--light-grey);
-    border: 1px solid var(--light-grey);
-    border-radius: 3px;
-    cursor: pointer;
-    margin-right: 1.8rem;
-}
-
-input[type="checkbox"]:hover {
-
-    background: rgba(89, 100, 224, 0.25);
-    ;
-
-}
-
-input[type="checkbox"]:checked {
-    position: relative;
-    background: rgba(89, 100, 224, 1);
-    background-image: url('../../assets/pictures/check.svg');
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: 12px;
+.grid-filter-button {
+    display: flex;
+    justify-content: center;
 }
 
 .input-location {
@@ -98,9 +95,22 @@ input[type="checkbox"]:checked {
     height: auto;
 }
 
+.form-arrow {
+    display: flex;
+    justify-content: space-between;
+}
+
+.box-arrow {
+    display: grid;
+    place-items: center;
+    width: 10vw;
+}
+
+
+
 @media screen and (max-width:1100px) {
     .form {
-        grid-template-columns: repeat(4, 1fr);
+        grid-template-columns: repeat(3, 1fr);
     }
 }
 

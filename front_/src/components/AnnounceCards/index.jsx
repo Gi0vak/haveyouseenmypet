@@ -7,6 +7,7 @@ const AnnouceCards = ({
     datas,
     handleMore,
     handleUpdate,
+    handleDelete,
     admin,
     theme }) => {
 
@@ -22,11 +23,16 @@ const AnnouceCards = ({
                             name={el.name}
                             logo={el.imageURL}
                             postedAt={el.date_perte}
-                            location={el.code_postal}
+                            town={el.ville}
+                            postalCode={el.code_postal}
                             id={el.id}
                             admin={admin}
                             handleUpdate={handleUpdate}
+                            handleDelete={handleDelete}
                             theme={theme}
+                            sexe={el.sexe}
+                            race={el.race}
+                            color={el.couleur}
                         />)
                 })}
             </section>
