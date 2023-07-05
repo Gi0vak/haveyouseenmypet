@@ -20,7 +20,7 @@
     /* Espacement entre les icônes */
 }
 
-.sectionLiens {}
+
 
 .liens {
 
@@ -31,7 +31,7 @@
     color: white;
     font-size: 12px;
 
-    /*position: relative;
+    /*
     bottom: 0;
     left: 50%;
     transform: translateX(-50%);
