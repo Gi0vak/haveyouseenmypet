@@ -11,8 +11,6 @@ import { useContext } from 'react';
 const Navbar = () => {
 
     const { toggleTheme, theme } = useContext(ThemeContext);
-
-
     return (
 
         <>
@@ -22,10 +20,13 @@ const Navbar = () => {
                 <Link className="logo" to="/">
                     <img src={logo2} alt="HYSMP? logo" className='topbar-logo' />
                 </Link>
-
                 <div className='center'>
-                    <Link to="/admin" >
-                        <img src={admin} alt="admin logo" className='admin-logo' />
+
+                    <Link className='profil-link' to="/admin" >
+                        <div className="profil-icone">
+                            <img src={admin} alt="admin logo" className='admin-logo' />
+
+                        </div>
                     </Link>
                     <div className='toggle-button'>
                         <img src={sun} alt="sun" className='sun' />
@@ -34,13 +35,8 @@ const Navbar = () => {
                             <span className="slider"></span>
                         </label>
                         <img src={moon} alt="moon" className='moon' />
-
                     </div>
-
-                </div >
-
-
-
+                </div>
             </section >
 
             <div className='buttons'>

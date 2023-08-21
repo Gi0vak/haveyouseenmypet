@@ -56,7 +56,7 @@ const NewSingle = ({ theme, bodytheme }) => {
                 console.log('Error : ', error);
             }
         }
-        { getAnnounce && singleAnnounce() }
+        singleAnnounce()
 
     }, [announceID]);
     console.log("infos annonce ", getAnnounce);
