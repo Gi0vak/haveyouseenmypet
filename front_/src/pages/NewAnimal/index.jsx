@@ -82,9 +82,9 @@ const NewAnimal = ({ theme, bodytheme }) => {
     };
 
     return (
-        <section className={`New-single ${bodytheme}`}>
+        <section className={`New-single`}>
             <Topbar />
-            <section className="new-single-body">
+            <section className={`new-single-body ${bodytheme}`}>
                 <div className='back-home'>
                     <Link to="/admin">annuler</Link>
                 </div>

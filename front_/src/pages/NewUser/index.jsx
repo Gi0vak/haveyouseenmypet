@@ -49,8 +49,8 @@ const NewUser = ({ theme, bodytheme }) => {
     return (
         <>
             <Topbar />
-            <section className={`New-single ${bodytheme}`}>
-                <section className="new-single-body">
+            <section className={`New-single `}>
+                <section className={`new-single-body ${bodytheme}`}>
                     <div className='back-home'>
                         <Link to="/admin">annuler</Link>
                     </div>

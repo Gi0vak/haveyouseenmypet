@@ -62,9 +62,14 @@
 .delete-update {
     position: absolute;
     display: flex;
-    gap: 3rem;
-    bottom: 40px;
-    left: 220px;
+    gap: 4rem;
+    bottom: 14rem;
+    right: -4.5rem;
+    flex-direction: column;
+    background-color: #fff;
+    padding: 1rem;
+    box-shadow: 0 5px 0px rgba(0, 0, 0, 0.1);
+    border-radius: 0 10px 10px 0;
 }
 
 .card-announce-desc h1 {

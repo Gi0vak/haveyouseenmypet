@@ -76,9 +76,11 @@ const Home = ({ theme, bodytheme }) => {
     return (
         <>
             <Topbar />
-            <div className='admin-back-home'>
-                <Link to="/">Home</Link>
-            </div>
+            <Link to="/">
+                <div className='admin-back-home'>
+                    Home
+                </div>
+            </Link>
             <div className="add-announce">
                 <button className='button-one add-announce-btn' onClick={handleNewAnnounce}>
                     Add an announce

@@ -22,5 +22,15 @@
         /* ajuste la taille de la police pour les écrans plus grands */
     }
 
+}
+
+@media screen and (min-width: 1468px) {
+    html {
+        font-size: 14px;
+        /* ajuste la taille de la police pour les écrans plus grands */
+    }
+
+
+
 
 }

@@ -16,7 +16,7 @@
 
 .single-header {
     position: inherit;
-    top: 120px;
+    top: 100px;
     display: grid;
     grid-template-columns: 140fr 400fr 147fr;
     align-items: center;
