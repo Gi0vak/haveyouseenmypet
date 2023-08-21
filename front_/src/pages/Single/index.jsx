@@ -31,7 +31,7 @@ const Single = ({ theme, bodytheme, admin }) => {
                 console.log('Error : ', error);
             }
         }
-        { getAnnounce && singleAnnounce() }
+        singleAnnounce()
 
     }, [announceID]);
 

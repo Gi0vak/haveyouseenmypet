@@ -3,6 +3,28 @@
 }
 
 
+/* .admin-logo {
+    margin-left: 4.5em;
+    margin-top: 2em;
+    position: relative;
+} */
+
+.center {
+    display: grid;
+    place-items: center;
+    z-index: 3;
+}
+
+
+
+.profil-icone {}
+
+.admin-logo {
+    width: 40px;
+    height: auto;
+    padding-top: 2rem;
+}
+
 .topbar {
     position: relative;
     display: flex;
@@ -57,9 +79,9 @@
 }
 
 @media screen and (max-width: 1000px) {
-
-    .admin-logo {
-        width: 2rem;
+    .topbar-img {
+        /* min-width: auto; */
+        max-height: auto;
     }
 
     .topbar-logo {
