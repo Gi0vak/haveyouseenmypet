@@ -61,7 +61,7 @@ const Single = ({ theme, bodytheme, admin }) => {
                 {getAnnounce && (
                     <section className="single-body">
                         <div className={`single-header ${theme}`}>
-                            <img src={getAnnounce.imageURL} alt="photo announce" />
+                            <img className="single-img" src={getAnnounce.imageURL} alt="photo announce" />
                             <div className="single-header-company">
                                 <h1>nom animal : {getAnnounce.name}</h1>
 

@@ -12,9 +12,6 @@ const Home = ({ theme, bodytheme }) => {
     const [getAnnounces, setGetAnnounces] = useState([]);
     const [n, setN] = useState(12);
 
-
-
-
     //fonctions qui récupère toutes les données de la collection annonces et coupé en fonction de n (nombre d'annonces par page)
     useEffect(() => {
         const awaitAnnounces = async () => {

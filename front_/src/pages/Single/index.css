@@ -24,12 +24,12 @@
     padding-right: 4.3rem;
     height: 140px;
     width: 100%;
+    overflow: hidden;
 }
 
 .single-header>img {
     display: flex;
-    width: 100%;
-    height: 100%;
+    object-fit: cover;
     background-color: #E99210;
     border-radius: 6px 0px 0px 6px;
     color: white;
