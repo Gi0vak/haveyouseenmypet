@@ -7,6 +7,7 @@ import { DeleteAnnounce, GetAnnounce } from '../../API/api';
 import { useNavigate } from 'react-router-dom';
 import Moment from 'moment';
 import { Link } from 'react-router-dom';
+import ScrollToTop from '../../components/ScrollToTop';
 const Single = ({ theme, bodytheme, admin }) => {
     const navigate = useNavigate();
 
@@ -73,6 +74,7 @@ const Single = ({ theme, bodytheme, admin }) => {
     console.log("infos annonce ", getAnnounce);
     return (
         <>
+            <ScrollToTop />
             <Topbar />
             <div className={`Single ${bodytheme}`}>
                 <div className='back-home'>

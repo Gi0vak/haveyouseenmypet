@@ -25,11 +25,9 @@ const Navbar = () => {
                     <img src={logo2} alt="HYSMP? logo" className='topbar-logo' />
                 </Link>
                 <div className='center'>
-
                     <Link className='profil-link' to="/admin" >
                         <div className="profil-icone">
                             <img src={admin} alt="admin logo" className='admin-logo' />
-
                         </div>
                     </Link>
                     <div className='toggle-button'>

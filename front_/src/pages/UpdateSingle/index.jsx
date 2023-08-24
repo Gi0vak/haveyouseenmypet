@@ -7,6 +7,7 @@ import { UpdateAnnounce } from '../../API/api.js';
 import { GetAnnounce } from '../../API/api.js';
 import { useParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
+import ScrollToTop from '../../components/ScrollToTop';
 
 const NewSingle = ({ theme, bodytheme }) => {
     const navigate = useNavigate();
@@ -98,6 +99,7 @@ const NewSingle = ({ theme, bodytheme }) => {
 
     return (
         <section className={`New-single ${bodytheme}`}>
+            <ScrollToTop />
             <Topbar />
             <section className="new-single-body">
                 <Link to="/admin">

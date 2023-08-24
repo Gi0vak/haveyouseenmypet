@@ -16,9 +16,6 @@
 }
 
 
-
-.profil-icone {}
-
 .admin-logo {
     width: 40px;
     height: auto;
@@ -28,7 +25,6 @@
 .topbar {
     position: relative;
     display: flex;
-    justify-content: space-around;
     padding: 0 5.8rem 30rem 5.8rem;
     justify-content: space-between;
     width: auto;
@@ -42,10 +38,16 @@
     width: 100%;
     top: 0;
     left: 0;
+
+}
+
+.topbar-logo {
+    width: 200px;
 }
 
 .buttons {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-around;
     align-items: center;
     position: absolute;
@@ -53,9 +55,10 @@
     width: 100%;
 }
 
-@media screen and (max-width: 1000px) {
+
+
+/* @media screen and (max-width: 1000px) {
     .topbar-img {
-        /* min-width: auto; */
         max-height: auto;
     }
 
@@ -93,9 +96,9 @@
     }
 
 
-}
+} */
 
-@media screen and (max-width: 767px) {
+/* @media screen and (max-width: 767px) {
 
     .topbar {
         padding: 0 0 35px 0;
@@ -104,7 +107,7 @@
         padding-right: 1rem;
     }
 
-}
+} */
 
 .toggle-button {
     display: flex;
@@ -175,4 +178,60 @@ input:checked+.slider:before {
     -webkit-transform: translateX(34px);
     -ms-transform: translateX(34px);
     transform: translateX(34px);
+}
+
+@media screen and (max-width: 800px) {
+    .admin-logo {
+        width: 30px;
+        height: auto;
+        padding-top: 2rem;
+    }
+
+    .sun {
+        width: 15px;
+        height: auto;
+        z-index: 2;
+        margin: 1em;
+    }
+
+    .moon {
+        width: 15px;
+        height: auto;
+        z-index: 2;
+        margin: 1em;
+    }
+
+    .switch {
+        position: relative;
+        display: inline-block;
+        width: 37px;
+        height: 34px;
+    }
+
+    .switch input {
+        display: none;
+    }
+
+    .switch {
+        width: 30px !important;
+        height: 20px !important;
+    }
+
+    .slider::before {
+        height: 10px !important;
+        width: 10px !important;
+        left: 4px;
+        bottom: 5px;
+        border-radius: 50%;
+    }
+
+    input:checked+.slider:before {
+        -webkit-transform: translateX(15px);
+        -ms-transform: translateX(15px);
+        transform: translateX(15px);
+    }
+
+    .topbar-logo {
+        width: 150px;
+    }
 }
