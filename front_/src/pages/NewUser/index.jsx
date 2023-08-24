@@ -51,9 +51,11 @@ const NewUser = ({ theme, bodytheme }) => {
             <Topbar />
             <section className={`New-single ${bodytheme}`}>
                 <section className="new-single-body">
-                    <div className='back-home'>
-                        <Link to="/admin">annuler</Link>
-                    </div>
+                    <Link to="/admin">
+                        <div className='back-home'>
+                            annuler
+                        </div>
+                    </Link>
                     <form className={`new-single-form ${theme}`} onSubmit={handleSubmitCreate}>
                         <h2>Utilisateur</h2>
 

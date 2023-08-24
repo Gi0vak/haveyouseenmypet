@@ -3,7 +3,7 @@ import Topbar from '../../components/Topbar';
 import Footer from '../../components/Footer';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { GetAnnounce } from '../../API/api';
+import { DeleteAnnounce, GetAnnounce } from '../../API/api';
 import { useNavigate } from 'react-router-dom';
 import Moment from 'moment';
 import { Link } from 'react-router-dom';
@@ -44,10 +44,30 @@ const Single = ({ theme, bodytheme, admin }) => {
         e.preventDefault();
         navigate(`/updateannounce/${announceID}`);
     }
-    const handleDelete = (e, announceID) => {
+    const handleDelete = async (e, id) => {
         e.preventDefault();
+        const confirm = window.confirm('Voulez-vous vraiment supprimer cette annonce?');
+        if (confirm) {
 
-        console.log(announceID);;
+            console.log("L'élément a été supprimé");
+
+            try {
+                const announce = await DeleteAnnounce(id)
+                console.log('the announce this id is deleted', announce);
+
+            } catch (error) {
+
+                console.log(error);
+
+            } finally {
+
+                navigate("/admin");
+
+            }
+
+        } else {
+            alert('vous avez annulé la suppression de l\'annonce');
+        }
 
     }
     console.log("infos annonce ", getAnnounce);
@@ -102,7 +122,7 @@ const Single = ({ theme, bodytheme, admin }) => {
 
                             <div className='single-buttons'>
                                 <button className='button-one' onClick={((e) => { handleUpdate(e, announceID) })}>update</button>
-                                <button className='button-two' onCliCk={((e) => { handleDelete(e, announceID) })}>delete</button>
+                                <button className='button-two' onClick={((e) => { handleDelete(e, announceID) })}>delete</button>
                             </div>
                         </article>
 

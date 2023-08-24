@@ -1,6 +1,5 @@
 import './index.css';
 import AnnounceCard from './AnnounceCard';
-import { useEffect, useState } from 'react';
 
 
 const AnnouceCards = ({

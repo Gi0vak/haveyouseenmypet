@@ -8,6 +8,7 @@ import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { useContext } from 'react';
 import { IdContext } from '../../context/IdContext';
+import ScrollToTop from '../../components/ScrollToTop';
 const NewAnimal = ({ theme, bodytheme }) => {
     const navigate = useNavigate();
     const [animalName, setAnimalName] = useState("");
@@ -83,11 +84,14 @@ const NewAnimal = ({ theme, bodytheme }) => {
 
     return (
         <section className={`New-single ${bodytheme}`}>
+
+            <ScrollToTop />
             <Topbar />
             <section className="new-single-body">
-                <div className='back-home'>
-                    <Link to="/admin">annuler</Link>
+                <Link to="/admin"><div className='back-home'>
+                    annuler
                 </div>
+                </Link>
                 <form className={`new-single-form ${theme}`} onSubmit={handleSubmitCreate}>
                     <h2>Animal</h2>
 

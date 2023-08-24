@@ -100,10 +100,11 @@ const NewSingle = ({ theme, bodytheme }) => {
         <section className={`New-single ${bodytheme}`}>
             <Topbar />
             <section className="new-single-body">
-
-                <div className='back-home'>
-                    <Link to="/admin">annuler</Link>
-                </div>
+                <Link to="/admin">
+                    <div className='back-home'>
+                        annuler
+                    </div>
+                </Link>
                 <form className={`new-single-form ${theme}`} onSubmit={handleSubmitUpdate}>
                     <label htmlFor="announce-name">telephone</label>
                     <input
@@ -133,7 +134,6 @@ const NewSingle = ({ theme, bodytheme }) => {
                         type="text"
                         id="logo"
                         value={race}
-                        placeholder='logo foot par défaut'
                         onChange={(event) => setRace(event.target.value)}
                     />
 

@@ -56,13 +56,20 @@ const Home = ({ theme, bodytheme }) => {
                 const announce = await DeleteAnnounce(id)
                 console.log('the announce this id is deleted', announce);
 
-                window.location.reload();
             } catch (error) {
+
                 console.log(error);
+
+            } finally {
+
+                navigate("/admin");
+
             }
+
         } else {
             alert('vous avez annulé la suppression de l\'annonce');
         }
+
     }
     const handleNewAnnounce = async () => {
 

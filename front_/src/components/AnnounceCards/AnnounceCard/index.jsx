@@ -63,7 +63,7 @@ const AnnounceCard = ({
                 </article >
             </Link>
             {admin === "true" &&
-                <div className='delete-update'>
+                <div className={`delete-update ${theme}`}>
                     <Link to={`/updateannounce/${id}`} >
                         <img src='https://i.postimg.cc/Qx37sJMg/update.png' alt="update announce" className='update' />
                     </Link>

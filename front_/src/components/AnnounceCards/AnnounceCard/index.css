@@ -62,9 +62,12 @@
 .delete-update {
     position: absolute;
     display: flex;
+    flex-direction: column;
+    padding: 20px;
+    border-radius: 5px;
     gap: 3rem;
-    bottom: 40px;
-    left: 220px;
+    bottom: 0px;
+    right: -20px;
 }
 
 .card-announce-desc h1 {
@@ -85,9 +88,6 @@
     font-size: 1.4rem;
     font-weight: 400;
 }
-
-
-
 
 .delete {
     width: 30px;

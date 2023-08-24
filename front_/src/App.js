@@ -30,7 +30,7 @@ function App() {
         //les différentes routes vers les pages
         <div className={`App ${theme}`} >
             {/* // theme distibué par le context */}
-            < IdContext.Provider value={{ idUser, setIdUser, idAnimal, setIdAnimal, idAdress, setIdAdress }}>
+            <IdContext.Provider value={{ idUser, setIdUser, idAnimal, setIdAnimal, idAdress, setIdAdress }}>
 
                 <ThemeContext.Provider
                     value={{ theme, setTheme, bodyTheme, setBodyTheme, toggleTheme }}>
