@@ -34,6 +34,7 @@ const Single = ({ theme, bodytheme, admin }) => {
         singleAnnounce()
 
     }, [announceID]);
+    console.log(getAnnounce);
 
     const TimeAgo = (timestamp) => {
         const timeAgo = Moment(timestamp).fromNow();
@@ -88,6 +89,7 @@ const Single = ({ theme, bodytheme, admin }) => {
                                         <p>description: {getAnnounce.description}</p>
                                         <h1>ligne 1 adresse : {getAnnounce.adresse_premiere_ligne}</h1>
                                         <h1>ville : {getAnnounce.ville}</h1>
+                                        <h1>mail : {getAnnounce.mail}</h1>
 
 
                                     </div>
