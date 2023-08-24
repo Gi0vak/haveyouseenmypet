@@ -11,6 +11,10 @@ import { useContext } from 'react';
 const Navbar = () => {
 
     const { toggleTheme, theme } = useContext(ThemeContext);
+    const handleClickToBottom = () => {
+        window.scroll({ top: 500, left: 0, behavior: "smooth" });
+        return () => window.removeEventListener('scroll', handleClickToBottom);
+    };
     return (
 
         <>
@@ -41,10 +45,10 @@ const Navbar = () => {
 
             <div className='buttons'>
                 <Link to="/" >
-                    <button className='button-one'>J'ai trouvé un animal</button>
+                    <button className='button-one' onClick={() => handleClickToBottom()}>J'ai trouvé un animal</button>
                 </Link>
                 <Link to="/newuser" >
-                    <button className='button-two'>J'ai perdu un animal</button>
+                    <button className='button-two' onClick={() => handleClickToBottom()}>J'ai perdu un animal</button>
                 </Link>
             </div>
         </>
